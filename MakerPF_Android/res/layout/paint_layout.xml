@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/paint_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".PaintCanvas" >
+
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/background" />
+
+    <com.planetfactory.makerpf.GameTypes.Paint.PaintView
+        android:id="@+id/paint_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+    <ImageView
+        android:id="@+id/foreground_image"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/background" />
+
+    <LinearLayout
+        android:id="@+id/brush_color_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/paint_bottom"
+        android:gravity="right|center_vertical" >
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/garbage_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/home_button"
+        android:src="@drawable/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/camera_button"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignTop="@+id/garbage_button"
+        android:layout_toLeftOf="@+id/garbage_button"
+        android:src="@drawable/ic_launcher" />
+
+    <ImageView
+        android:id="@+id/home_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_launcher" />
+
+    <LinearLayout
+        android:id="@+id/brush_size_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/home_button"
+        android:background="@drawable/paint_left"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:id="@+id/size_big_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/paint_big" />
+
+        <ImageView
+            android:id="@+id/size_medium_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/size_selected_view"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/paint_medium" />
+
+        <ImageView
+            android:id="@+id/size_small_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="false"
+            android:src="@drawable/paint_small" />
+
+        <ImageView
+            android:id="@+id/size_selected_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/paint_medium" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/instruction_backdrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:gravity="center_horizontal|center_vertical" >
+
+        <RelativeLayout
+            android:id="@+id/bg_popup"
+            android:layout_width="458dp"
+            android:layout_height="300dp"
+            android:background="@drawable/bg_popup" >
+            
+            <ImageView
+                android:id="@+id/instruction_arrow"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="28dp"
+                android:layout_marginRight="38dp"
+                android:src="@drawable/instruction_arrow" />
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="200dp"
+                android:layout_height="290dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/instruction_arrow" />
+
+            <TextView
+                android:id="@+id/text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/instruction_arrow"
+                android:layout_alignRight="@+id/instruction_arrow"
+                android:layout_toRightOf="@+id/avatar"
+                android:maxWidth="200dp"
+                android:minHeight="175dp"
+                android:text="Paint"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#000000" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>
