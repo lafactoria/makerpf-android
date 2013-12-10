@@ -5,8 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import com.planetfactory.makerpf.R;
-
 import android.app.Activity;
 import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
@@ -19,13 +17,15 @@ import android.util.Log;
 import android.view.Display;
 import android.view.View;
 
+import com.planetfactory.makerpf.R;
+
 public class ScreenCapture {
 
 	private static final String SCREENSHOT_LOCATION = Environment.getExternalStorageDirectory().toString() + "/Pictures/MakerPF/";
 
 	public static void capture(final Activity pActivity){
 		
-		// Get device dimmensions
+		// Get device dimmensions 
 		Display display = pActivity.getWindowManager().getDefaultDisplay();
 		Point size = new Point();
 		
@@ -40,7 +40,7 @@ public class ScreenCapture {
 		final Canvas canvas = new Canvas(bitmap);
 
 		// Get current theme to know which background to use
-		final Theme theme = pActivity.getTheme();
+		final Theme theme = pActivity.getTheme(); 
 		final TypedArray ta = theme.obtainStyledAttributes(new int[] { android.R.attr.windowBackground });
 		final int res = ta.getResourceId(0, 0);
 		final Drawable background = pActivity.getResources().getDrawable(res);

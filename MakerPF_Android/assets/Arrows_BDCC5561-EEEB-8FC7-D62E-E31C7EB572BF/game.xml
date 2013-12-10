@@ -1,0 +1,21 @@
+<game>
+	<id val="BDCC5561-EEEB-8FC7-D62E-E31C7EB572BF" />
+	<type type="arrows" />
+	<avatar active="false" />
+	<desc text="Relaciona con flechas" />
+	<page>
+		<background src="background.jpg" scale="noscale" color="15658734" rgb="238-238-238" zoom="0.75"/>
+		<parent id="1" x="248" y="195" scale="1000" rotation="0" src="apple_tree.png" textColor="0" rgb="0-0-0" kind="1">
+			<texts>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="1" x="788" y="259" scale="1000" rotation="0" src="apple.png" textColor="0" rgb="0-0-0" kind="1">
+			<texts>
+			</texts>
+				<sounds>
+				</sounds>
+			</item>
+		</parent>
+	</page>
+</game>

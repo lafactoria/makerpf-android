@@ -3,6 +3,7 @@ package com.planetfactory.makerpf.GameTypes.InteractiveImages;
 import java.util.ArrayList;
 
 import org.andengine.entity.primitive.Rectangle;
+import org.andengine.entity.text.Text;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
 import org.andengine.opengl.texture.region.ITextureRegion;
@@ -119,6 +120,13 @@ public class InteractiveImages extends BaseGame implements IPopupListener{
 			parentSprite.setZIndex(1);
 			parentSprite.setUserData(popup);
 			this.attachChild(parentSprite);
+			
+			if(parent.getKind() > 1){
+				final Text text = new Text(parentSprite.getWidth() * 0.5f, parentSprite.getHeight() * 0.5f, mResourceManager.mFont, parent.getText(), mResourceManager.getEngine().getVertexBufferObjectManager());
+				text.setColor(parent.getColor());
+				parentSprite.attachChild(text);
+				parentSprite.setAlpha(0);
+			}
 			
 			this.attachChild(popup);
 			

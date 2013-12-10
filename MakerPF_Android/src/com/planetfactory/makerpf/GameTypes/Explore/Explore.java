@@ -1,5 +1,6 @@
 package com.planetfactory.makerpf.GameTypes.Explore;
 
+import org.andengine.entity.text.Text;
 import org.andengine.input.touch.TouchEvent;
 
 import android.util.Log;
@@ -61,6 +62,14 @@ public class Explore extends BaseGame{
 			};
 			mResourceManager.getScene().registerTouchArea(sprite);
 			this.attachChild(sprite);
+			
+			if(item.getKind() > 1){
+				final Text text = new Text(sprite.getWidth() * 0.5f, sprite.getHeight() * 0.5f, mResourceManager.mFont, item.getText(), mResourceManager.getEngine().getVertexBufferObjectManager());
+				text.setColor(item.getColor());
+				sprite.attachChild(text);
+				sprite.setAlpha(0);
+			}
+			sprite.setPosition(sprite.getX() + MainActivity.MARGIN_X, sprite.getY());
 		}
 		
 		super.onPopulateFinal();

@@ -1,0 +1,6 @@
+<game>
+	<cover>
+		<background src="none.png" scale="noscale" color="15658734" rgb="238-238-238" zoom="0.75"/>
+		<play src="bt_jugar.png" x="512" y="384" rotation="0" scale="1000"/>
+	</cover>
+</game>

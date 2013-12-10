@@ -2,20 +2,29 @@ package com.planetfactory.makerpf.GameTypes.ListenAndTouch;
 
 import java.util.ArrayList;
 
+import org.andengine.entity.text.Text;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
 import org.andengine.opengl.texture.region.ITextureRegion;
 
+import com.planetfactory.makerpf.MainActivity;
 import com.planetfactory.makerpf.GameTypes.BaseGame;
 import com.planetfactory.makerpf.GameTypes.Item;
+import com.planetfactory.makerpf.Layers.Main.Main;
 import com.planetfactory.makerpf.Resources.ResourceManager;
 import com.planetfactory.makerpf.Utils.MPFSprite;
 import com.planetfactory.makerpf.Utils.Actions.ActionFactory;
 
 public class ListenAndTouch extends BaseGame{
 	
+	//============================================================
+	// CONSTANTS
+	//============================================================
 	private static final String SOUND_BUTTON_STRING = "bt_so_default.png";
 	
+	//============================================================
+	// VARIABLES
+	//============================================================
 	private ITextureRegion mSoundButtonTextureRegion;
 	private MPFSprite mSoundButtonSprite;
 	
@@ -26,10 +35,16 @@ public class ListenAndTouch extends BaseGame{
 	
 	private int mItemCount = 0;
 	
+	//============================================================
+	// CONSTRUCTOR
+	//============================================================
 	public ListenAndTouch(ResourceManager pResourceManager) {
 		super(pResourceManager);
 	}
 
+	//============================================================
+	// ON LOAD RESOURCES
+	//============================================================
 	@Override
 	public void onLoadResources() {
 		super.onLoadResources();
@@ -39,6 +54,9 @@ public class ListenAndTouch extends BaseGame{
 		mSoundButtonTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mTextures.get(mTextures.size() - 1), mResourceManager.getActivity(), texturePath, 0, 0);
 	}
 
+	//============================================================
+	// UNLOAD RESOURCES
+	//============================================================
 	@Override
 	public void onUnloadResources() {
 		// TODO Auto-generated method stub
@@ -48,6 +66,9 @@ public class ListenAndTouch extends BaseGame{
 		mItemCount = 0;
 	}
 
+	//============================================================
+	// ON POPULATE
+	//============================================================
 	@Override
 	public void onPopulate() {
 		super.onPopulate();
@@ -57,8 +78,7 @@ public class ListenAndTouch extends BaseGame{
 		this.mSoundButtonSprite = new MPFSprite(mBackButtonSprite.getX() + mSoundButtonTextureRegion.getWidth() + 5, mBackButtonSprite.getY(), mSoundButtonTextureRegion, mResourceManager.getEngine().getVertexBufferObjectManager()){
 
 			@Override
-			public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
-					float pTouchAreaLocalX, float pTouchAreaLocalY) {
+			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				if(pSceneTouchEvent.isActionDown()){
 					
 					if(mItemToGuess != null){
@@ -81,8 +101,7 @@ public class ListenAndTouch extends BaseGame{
 			final MPFSprite sprite = new MPFSprite(item, mResourceManager){
 
 				@Override
-				public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
-						float pTouchAreaLocalX, float pTouchAreaLocalY) {
+				public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 
 					if(pSceneTouchEvent.isActionDown() && mItemToGuess == this){
 						mItemsCorrectlyGuessed.add(this);
@@ -94,17 +113,22 @@ public class ListenAndTouch extends BaseGame{
 							endGame();
 						} else {
 							getNextItem();
-						}
-						
+						}						
 						return true;
-					}
-					
+					}					
 					return false;
-				}
-				
+				}				
 			};
+			sprite.setPosition(sprite.getX() + MainActivity.MARGIN_X, sprite.getY());
 			mResourceManager.getScene().registerTouchArea(sprite);
 			this.attachChild(sprite);
+			
+			if(item.getKind() > 1){
+				final Text text = new Text(sprite.getWidth() * 0.5f, sprite.getHeight() * 0.5f, mResourceManager.mFont, item.getText(), mResourceManager.getEngine().getVertexBufferObjectManager());
+				text.setColor(item.getColor());
+				sprite.attachChild(text);
+				sprite.setAlpha(0);
+			}
 			
 			mItemsToGuess.add(sprite);
 		}
@@ -114,6 +138,9 @@ public class ListenAndTouch extends BaseGame{
 		super.onPopulateFinal();
 	}
 
+	//============================================================
+	// GET NEXT ITEM
+	//============================================================
 	private MPFSprite getNextItem(){
 		final int random = (int) (Math.random() * mItemsToGuess.size());
 		mItemToGuess = mItemsToGuess.remove(random);
@@ -123,6 +150,9 @@ public class ListenAndTouch extends BaseGame{
 		return mItemToGuess;
 	}
 
+	//============================================================
+	// ON START GAME
+	//============================================================
 	@Override
 	protected void onStartGame() {
 		// TODO Auto-generated method stub

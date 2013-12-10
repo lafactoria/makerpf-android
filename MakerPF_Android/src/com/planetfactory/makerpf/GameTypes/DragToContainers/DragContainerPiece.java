@@ -6,6 +6,8 @@ import org.andengine.entity.modifier.ParallelEntityModifier;
 import org.andengine.entity.modifier.ScaleModifier;
 import org.andengine.input.touch.TouchEvent;
 
+import android.util.Log;
+
 import com.planetfactory.makerpf.MainActivity;
 import com.planetfactory.makerpf.GameTypes.BaseItem;
 import com.planetfactory.makerpf.Resources.ResourceManager;
@@ -14,17 +16,25 @@ import com.planetfactory.makerpf.Utils.IDraggableItemListener;
 
 public class DragContainerPiece extends DraggableItem{
 
-	final MoveModifier mFalseMoveModifier = new MoveModifier(0, 0, 0, 0, 0);
-	final MoveModifier mCorrectMoveModifier = new MoveModifier(0, 0, 0, 0, 0);
-	final ScaleModifier mScaleModifier = new ScaleModifier(0, 0, 0);
+	//========================================================
+	// VARIABLES
+	//========================================================
+	final MoveModifier mFalseMoveModifier 		= new MoveModifier(0, 0, 0, 0, 0);
+	final MoveModifier mCorrectMoveModifier 	= new MoveModifier(0, 0, 0, 0, 0);
+	final ScaleModifier mScaleModifier 			= new ScaleModifier(0, 0, 0);
 	
+	//========================================================
+	// CONSTRUCTOR
+	//========================================================
 	public DragContainerPiece(BaseItem pBaseItem, ResourceManager pResourceManager, final IDraggableItemListener pDraggableItemListener) {
 		super(pBaseItem, pResourceManager, pDraggableItemListener);
 	}
 
+	//========================================================
+	// ON PRESSED
+	//========================================================
 	@Override
-	protected void onPressed(TouchEvent pSceneTouchEvent,
-			float pTouchAreaLocalX, float pTouchAreaLocalY) {
+	protected void onPressed(TouchEvent pSceneTouchEvent,float pTouchAreaLocalX, float pTouchAreaLocalY) {
 		mLocalTouchX = pTouchAreaLocalX * this.mScaleX;
 		mLocalTouchY = pTouchAreaLocalY * this.mScaleX;
 		
@@ -33,15 +43,19 @@ public class DragContainerPiece extends DraggableItem{
 		}
 	}
 
+	//========================================================
+	// ON MOVED
+	//========================================================
 	@Override
-	protected void onMoved(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX,
-			float pTouchAreaLocalY) {
+	protected void onMoved(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX,	float pTouchAreaLocalY) {
 		this.setPosition(pSceneTouchEvent.getX(), MainActivity.HEIGHT - pSceneTouchEvent.getY());
 	}
 
+	//========================================================
+	// ON RELEASE
+	//========================================================
 	@Override
-	protected void onReleased(TouchEvent pSceneTouchEvent,
-			float pTouchAreaLocalX, float pTouchAreaLocalY) {
+	protected void onReleased(TouchEvent pSceneTouchEvent,	float pTouchAreaLocalX, float pTouchAreaLocalY) {
 		final float currentX = this.getX();
 		final float currentY = this.getY();
 
@@ -67,11 +81,11 @@ public class DragContainerPiece extends DraggableItem{
 				}
 
 			} else {
-				mFalseMoveModifier.reset(0.1f, this.getX(), this.getBaseItem().getX(), this.getY(), this.getBaseItem().getY());
+				mFalseMoveModifier.reset(0.1f, this.getX(), this.getBaseItem().getX()+MainActivity.MARGIN_X, this.getY(), this.getBaseItem().getY());
 				this.registerEntityModifier(mFalseMoveModifier);
 			}
 		} else {
-			mFalseMoveModifier.reset(0.1f, this.getX(), this.getBaseItem().getX(), this.getY(), this.getBaseItem().getY());
+			mFalseMoveModifier.reset(0.1f, this.getX(), this.getBaseItem().getX()+MainActivity.MARGIN_X, this.getY(), this.getBaseItem().getY());
 			this.registerEntityModifier(mFalseMoveModifier);
 		}
 	}

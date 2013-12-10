@@ -3,9 +3,12 @@ package com.planetfactory.makerpf.GameTypes.Quiz;
 import java.util.ArrayList;
 
 import org.andengine.entity.sprite.Sprite;
+import org.andengine.entity.text.AutoWrap;
 import org.andengine.entity.text.Text;
+import org.andengine.entity.text.TextOptions;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.texture.region.ITextureRegion;
+import org.andengine.util.adt.align.HorizontalAlign;
 
 import com.planetfactory.makerpf.GameTypes.BaseItem;
 import com.planetfactory.makerpf.Resources.ResourceManager;
@@ -53,11 +56,10 @@ public class QuizItemBox extends MPFSprite{
 		
 		mIsSelected = false;
 		
-		mCheckBoxSprite = new Sprite(26, this.getHeight() - mCheckBoxTextureRegion.getHeight() * 0.5f - 15, mCheckBoxTextureRegion, mResourceManager.getEngine().getVertexBufferObjectManager()){
+		mCheckBoxSprite = new Sprite(26, this.getHeight() - mCheckBoxTextureRegion.getHeight() * 0.5f - 3, mCheckBoxTextureRegion, mResourceManager.getEngine().getVertexBufferObjectManager()){
 
 			@Override
-			public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
-					float pTouchAreaLocalX, float pTouchAreaLocalY) {
+			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				if(pSceneTouchEvent.isActionDown()){
 					
 					selectBox((mIsSelected) ? false : true);
@@ -77,18 +79,29 @@ public class QuizItemBox extends MPFSprite{
 		};
 		mResourceManager.getScene().registerTouchArea(mCheckBoxSprite);
 		this.attachChild(mCheckBoxSprite);
-		
+		 
 		mTickSprite = new Sprite(mCheckBoxSprite.getWidth() * 0.5f, mCheckBoxSprite.getHeight() * 0.5f, mTickTextureRegion, mResourceManager.getEngine().getVertexBufferObjectManager());
 		mTickSprite.setVisible(false);
 		mCheckBoxSprite.attachChild(mTickSprite);
 		
-		mImageSprite = new Sprite(0, this.getHeight() * 0.5f, mBaseItem.getTextureRegion(), mResourceManager.getEngine().getVertexBufferObjectManager());
-		mImageSprite.setScale((this.getHeight() - 23) / mImageSprite.getHeight());
-		mImageSprite.setX(mCheckBoxSprite.getX() + mCheckBoxSprite.getWidth() + mImageSprite.getWidth() * mImageSprite.getScaleX() * 0.5f + 5);
-		this.attachChild(mImageSprite);
+		if(mBaseItem.getTextureRegion() != null){		
+			mImageSprite = new Sprite(0, this.getHeight() * 0.5f, mBaseItem.getTextureRegion(), mResourceManager.getEngine().getVertexBufferObjectManager());
+			mImageSprite.setScale((this.getHeight() - 23) / mImageSprite.getHeight());
+			mImageSprite.setX(mCheckBoxSprite.getX() + mCheckBoxSprite.getWidth() + mImageSprite.getWidth() * mImageSprite.getScaleX() * 0.5f + 5);
+			this.attachChild(mImageSprite);
+		}
 		
-		mText = new Text(0, 0, ResourceManager.mFont, mBaseItem.getText(ResourceManager.getLanguage()), mBaseItem.getText(ResourceManager.getLanguage()).length(), mResourceManager.getEngine().getVertexBufferObjectManager());
-		mText.setPosition(mImageSprite.getX() + mImageSprite.getWidth() * 0.5f + mText.getWidth() * 0.5f + 5, this.getHeight() * 0.5f + ResourceManager.mFont.getLineHeight());
+		TextOptions to = new TextOptions(HorizontalAlign.LEFT);
+		to.setAutoWrap(AutoWrap.WORDS);
+		to.setAutoWrapWidth(200);
+		
+		mText = new Text(0, 0, ResourceManager.mFont, mBaseItem.getText(), mBaseItem.getText().length(), to,mResourceManager.getEngine().getVertexBufferObjectManager());
+		if(mImageSprite!=null){
+			mText.setPosition(mImageSprite.getX() + mImageSprite.getWidth() * 0.5f + mText.getWidth() * 0.5f + 5, this.getHeight() * 0.5f + ResourceManager.mFont.getLineHeight());
+		}
+		else{
+			mText.setPosition(150,90);
+		}
 		mText.setColor(0, 0, 0);
 		this.attachChild(mText);
 	}

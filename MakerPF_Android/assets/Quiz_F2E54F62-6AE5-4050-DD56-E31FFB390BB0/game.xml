@@ -1,0 +1,45 @@
+<game>
+	<id val="F2E54F62-6AE5-4050-DD56-E31FFB390BB0" />
+	<type type="quiz" />
+	<avatar active="false" />
+	<desc text="Cuestionario" />
+	<page>
+		<background src="background.jpg" scale="noscale" color="15658734" rgb="238-238-238" zoom="0.75"/>
+		<parent id="1" x="512" y="384" scale="1000" rotation="0" src="01.png" textColor="0" rgb="0-0-0" kind="0">
+			<item id="1" parent="1" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="1" text="buena"/>
+				<text lang="2" text="buena"/>
+				<text lang="7" text="buena"/>
+			</texts>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="2" parent="1" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="1" text="mala"/>
+				<text lang="2" text="mala"/>
+				<text lang="7" text="mala"/>
+			</texts>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="2" x="512" y="384" scale="1000" rotation="0" src="02.png" textColor="0" rgb="0-0-0" kind="0">
+			<item id="1" parent="2" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="1" text="buena"/>
+				<text lang="2" text="buena"/>
+				<text lang="7" text="buena"/>
+			</texts>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="2" parent="2" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="1" text="mala"/>
+				<text lang="2" text="mala"/>
+				<text lang="7" text="mala"/>
+			</texts>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+	</page>
+</game>

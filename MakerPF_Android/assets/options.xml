@@ -1,0 +1,9 @@
+<options>
+	<languages>
+		<language id="1" lang="Inglés" />
+		<language id="2" lang="Español" />
+		<language id="7" lang="Otro" />
+	</languages>
+	<cover active="false" />
+	<menu 	active="true" />
+</options>

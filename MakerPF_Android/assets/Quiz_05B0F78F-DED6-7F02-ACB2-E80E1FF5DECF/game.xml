@@ -1,0 +1,399 @@
+<game>
+	<id val="05B0F78F-DED6-7F02-ACB2-E80E1FF5DECF" />
+	<type type="quiz" />
+	<avatar active="false" />
+	<desc text="Cuestionario Deportes" />
+	<page>
+		<background src="FONDO-01.png" scale="noscale" color="15658734" rgb="238-238-238" zoom="0.75"/>
+		<parent id="1" x="512" y="384" scale="1000" rotation="0" src="esports-01.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cuántos aros olímpicos hay? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="1" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="cuatro"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="1" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="cinco"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="3" parent="1" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="seis"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="1" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="siete"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="2" x="512" y="384" scale="1000" rotation="0" src="esports-02.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cuántos jugadores de campo hay en un partido de baloncesto?"/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="2" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="5"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="2" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="10"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="3" parent="2" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="11"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="2" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="12"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="3" x="512" y="384" scale="1000" rotation="0" src="esports-03.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cuántos minutos  dura un partido de fútbol, en el tiempo reglamentario? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="3" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="45 minutos"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="3" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="80 minutos"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="3" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="90 minutos"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="4" parent="3" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="180 minutos"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="4" x="512" y="384" scale="1000" rotation="0" src="esports-04.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cada cuantos años se celebran unas olimpiadas? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="4" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="2"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="4" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="3"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="4" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="4"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="4" parent="4" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="5"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="5" x="512" y="384" scale="1000" rotation="0" src="esports-05.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Qué estilo de natación es el más rápido? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="5" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Mariposa"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="5" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Crol"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="3" parent="5" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Espalda"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="5" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Braza"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="6" x="512" y="384" scale="1000" rotation="0" src="esports-06.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿De que color es el mallot del líder del Tour de Francia? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="6" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Amarillo"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="2" parent="6" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Rosa"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="6" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Azul"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="6" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Verde"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="7" x="512" y="384" scale="1000" rotation="0" src="esports-07.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿ En futbol, a cuantos metros se encuentra el punto de penalti? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="7" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="5 metros"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="7" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="10 metros"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="7" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="11 metros"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="4" parent="7" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="20 metros"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="8" x="512" y="384" scale="1000" rotation="0" src="esports-08.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cuántos muñecos tiene un futbolín? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="8" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="10"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="8" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="11"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="8" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="20"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="8" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="22"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+		</parent>
+		<parent id="9" x="512" y="384" scale="1000" rotation="0" src="esports-09.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cuantos jugadores por equipo hay en el agua en un partido de waterpolo? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="9" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="5"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="9" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="6"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="9" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="7"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="4" parent="9" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="11"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="10" x="512" y="384" scale="1000" rotation="0" src="esports-10.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Que año se celebraron los Juegos Olímpicos en Barcelona? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="10" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="1982"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="10" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="1992"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="3" parent="10" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="1996"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="10" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="2000"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+	</page>
+</game>

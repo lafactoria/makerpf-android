@@ -4,8 +4,13 @@ import java.util.ArrayList;
 
 import org.andengine.entity.Entity;
 import org.andengine.entity.sprite.Sprite;
+import org.andengine.entity.text.AutoWrap;
 import org.andengine.entity.text.Text;
+import org.andengine.entity.text.TextOptions;
 import org.andengine.opengl.texture.region.ITextureRegion;
+import org.andengine.util.adt.align.HorizontalAlign;
+
+import android.util.Log;
 
 import com.planetfactory.makerpf.MainActivity;
 import com.planetfactory.makerpf.GameTypes.Item;
@@ -52,23 +57,29 @@ public class QuizPage extends Entity{
 		mPageImage = new Sprite(MainActivity.WIDTH - mParent.getTextureRegion().getWidth(), MainActivity.HEIGHT - mParent.getTextureRegion().getHeight(), mParent.getTextureRegion(), mResourceManager.getEngine().getVertexBufferObjectManager());
 		this.attachChild(mPageImage);
 		
-		mPageText = new Text(0, 0, ResourceManager.mFont, mParent.getText(ResourceManager.getLanguage()), mParent.getText(ResourceManager.getLanguage()).length(), mResourceManager.getEngine().getVertexBufferObjectManager());
+		TextOptions to = new TextOptions(HorizontalAlign.LEFT);
+		to.setAutoWrap(AutoWrap.WORDS);
+		to.setAutoWrapWidth(550);
+		mPageText = new Text(0, 0, ResourceManager.mFont, mParent.getText(), mParent.getText().length(),to, mResourceManager.getEngine().getVertexBufferObjectManager());
 		mPageText.setColor(0, 0, 0);
 		mPageText.setScale(1.3f);
 		mPageText.setAnchorCenterX(0);
-		mPageText.setPosition(25, MainActivity.HEIGHT - 95);
+		mPageText.setPosition(60 + MainActivity.MARGIN_X, MainActivity.HEIGHT - 135);
+		
 		this.attachChild(mPageText);
 		
-		final float leftX = MainActivity.WIDTH / 2 - pQuizBoxTextureRegion.getWidth() * 0.5f - 10;
-		final float rightX = MainActivity.WIDTH / 2 + pQuizBoxTextureRegion.getWidth() * 0.5f + 10;
-		float y = MainActivity.HEIGHT * 0.5f - pQuizBoxTextureRegion.getHeight() * 0.5f;
+		final float leftX 	= MainActivity.WIDTH / 2 		- pQuizBoxTextureRegion.getWidth() * 0.5f - 10;
+		final float rightX 	= MainActivity.WIDTH / 2 		+ pQuizBoxTextureRegion.getWidth() * 0.5f + 10;
+		float y 			= MainActivity.HEIGHT * 0.5f 	- pQuizBoxTextureRegion.getHeight() * 0.5f;
 		
+		Log.v(MainActivity.TAG,"Answers:" + mParent.getItems().size());
 		for(int i = 0; i < mParent.getItems().size(); i++){
 			final Item item = mParent.getItems().get(i);
 			
-			if(i + 1 % 3 == 0){
+			if(i % 2 == 0){
 				y += pQuizBoxTextureRegion.getHeight();
 			}
+			
 			
 			final float boxX;
 			final float boxY = y;;
@@ -79,6 +90,7 @@ public class QuizPage extends Entity{
 				boxX = rightX;
 			}
 			
+			Log.v(MainActivity.TAG,"Item Position:" +boxX + "x" + boxY);
 			final QuizItemBox quizBox = new QuizItemBox(boxX, boxY, item, pQuizBoxTextureRegion, pCheckBoxTextureRegion, pTickTextureRegion, mResourceManager);
 			quizBox.initializeBox(mSelectedQuizBoxes);
 			this.attachChild(quizBox);

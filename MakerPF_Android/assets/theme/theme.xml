@@ -1,0 +1,170 @@
+<theme>
+
+    <!-- ///////////////// LOADING ////////////////////////////////////////////// -->
+    <loading>
+        <image src="loading.jpg" />
+    </loading>
+
+    <!-- ///////////////// MENU BUTTONS ////////////////////////////////////////////// -->
+    <menu>
+        <languageSelect     x="" y="" srcLeft="" srcBg="" sound=""/>
+        <buttonHome 		sound="" x="20" y="20" src="bt_menu.png"/>
+        <buttonNext 		sound="" x="930" y="20" src="bt_next.png"/>
+        <buttonPrev 		sound="" x="870" y="20" src="bt_prev.png"/>
+    </menu>
+
+    <!-- ///////////////// INITIAL INSTRUCTION /////////////////////////////////////////////////// -->
+    <initialInstruction>
+        <onlyImage>
+            <background src="bg_popup.png" x="512" y="0" />
+            <text		color="000000" font="Helvetica" fontSize="24" x="512" y="50" maxWidth="314" maxHeight="314" />
+            <image		x="512" y="230" maxWidth="350" maxHeight="350" />
+            <next       x="400" y="80" src="instruction_arrow.png" />
+        </onlyImage>
+        <onlySound>
+            <background src="bg_popup.png" x="512" y="0" />
+            <sound		src="instruction_sound.png" x="512" y="300" />
+            <next       x="512" y="80" src="instruction_arrow.png" />
+        </onlySound>
+        <onlyText>
+            <background src="bg_popup.png" x="512" y="0" />
+            <text		color="000000" font="Helvetica" fontSize="24" x="212" y="50" maxWidth="500" maxHeight="500" />
+            <next       x="400" y="80" src="instruction_arrow.png" />
+        </onlyText>
+        <ImageAndText>
+            <background src="bg_popup.png" x="512" y="0" />
+            <text		color="000000" font="Helvetica" fontSize="24" x="512" y="50" maxWidth="314" maxHeight="314" />
+            <image		x="339" y="190" maxWidth="" maxHeight="" />
+            <next       x="400" y="80" src="instruction_arrow.png" />
+        </ImageAndText>
+        <ImageAndSound>
+            <background src="bg_popup.png" x="512" y="0" />
+            <sound		src="instruction_sound.png" x="280" y="90" />
+            <image		x="512" y="230" maxWidth="350" maxHeight="350" />
+            <next       x="400" y="80" src="instruction_arrow.png" />
+        </ImageAndSound>
+        <SoundAndText>
+            <background src="bg_popup.png" x="512" y="0" />
+            <sound		src="instruction_sound.png" x="200" y="90" />
+            <text		color="000000" font="Helvetica" fontSize="24" x="212" y="50" maxWidth="500" maxHeight="500" />
+            <next       x="400" y="80" src="instruction_arrow.png" />
+        </SoundAndText>
+        <ImageSoundAndText>
+            <background src="bg_popup.png" x="512" y="0" />
+            <sound		src="instruction_sound.png" x="510" y="90" />
+            <text		color="000000" font="Helvetica" fontSize="24" x="512" y="50" maxWidth="314" maxHeight="314" />
+            <image		x="339" y="190" maxWidth="314" maxHeight="314" />
+            <next       x="400" y="80" src="instruction_arrow.png" />
+        </ImageSoundAndText>
+    </initialInstruction>
+
+    <!-- ///////////////// END INSTRUCTION /////////////////////////////////////////////////// -->
+    <endInstruction>
+        <onlyImage>
+            <background src="" x="" y=""/>
+            <text		font="" fontSize="" x="" y="" maxWidth="" maxHeight=""/>
+            <image		x="" y="" maxWidth="" maxHeight=""/>
+        </onlyImage>
+        <onlySound>
+            <background src="" x="" y=""/>
+            <sound		src="" x="" y=""/>
+        </onlySound>
+        <onlyText>
+            <background src="" x="" y=""/>
+            <text		font="" fontSize="" x="" y="" maxWidth="" maxHeight=""/>
+        </onlyText>
+        <ImageAndText>
+            <background src="" x="" y=""/>
+            <text		font="" fontSize="" x="" y="" maxWidth="" maxHeight=""/>
+            <image		x="" y="" maxWidth="" maxHeight=""/>
+        </ImageAndText>
+        <ImageAndSound>
+            <background src="" x="" y=""/>
+            <sound		src="" x="" y=""/>
+            <image		x="" y="" maxWidth="" maxHeight=""/>
+        </ImageAndSound>
+        <SoundAndText>
+            <background src="" x="" y=""/>
+            <sound		src="" x="" y=""/>
+            <text		font="" fontSize="" x="" y="" maxWidth="" maxHeight=""/>
+        </SoundAndText>
+        <ImageSoundAndText>
+            <background src="" x="" y=""/>
+            <sound		src="" x="" y=""/>
+            <text		font="" fontSize="" x="" y="" maxWidth="" maxHeight=""/>
+            <image		x="" y="" maxWidth="" maxHeight=""/>
+        </ImageSoundAndText>
+    </endInstruction>
+
+    <!-- ///////////////// GAMETYPES //////////////////////////////////////////////////////////////////// -->
+    <explore></explore>
+
+    <drag elementsPosition="horizontal/vertical" xPosition="" yPosition=""></drag> <!-- En el cas de horitzontal es posa nomes la yPos, en el cas de vertical es posa nomes la xPos !-->
+
+    <memory>
+		<pieces n="8">
+			<position x="164" y="192" />
+			<position x="401" y="192" />
+			<position x="638" y="192" />
+			<position x="875" y="192" />
+			<position x="164" y="429" />
+			<position x="401" y="429" />
+			<position x="638" y="429" />
+			<position x="875" y="429" />
+		</pieces>				
+		<pieces n="12">
+			<position x="164" y="148" />
+			<position x="401" y="148" />
+			<position x="638" y="148" />
+			<position x="875" y="148" />
+			<position x="164" y="368" />
+			<position x="401" y="368" />
+			<position x="638" y="368" />
+			<position x="875" y="368" />
+			<position x="164" y="589" />
+			<position x="401" y="589" />
+			<position x="638" y="589" />
+			<position x="875" y="589" />
+		</pieces>
+	</memory>
+
+    <findme itemToSearchX="512" itemToSearchY="680"
+            maxPieceWidth="180"
+            itemFoundAction="" changeItemAction=""
+            itemFoundSound="" itemFailAction=""
+            itemFailSound="" >
+    </findme>
+
+	<paint>	
+		<colors bg="paint-bottom.png" x="110" y="680">
+			<color rgb="49-182-234" src="paint-c1.png" x="160" y="695" sound=""/>
+			<color rgb="38-78-170" src="paint-c2.png" x="225" y="695" sound=""/>	
+			<color rgb="141-70-162" src="paint-c3.png" x="290" y="695" sound=""/>	
+			<color rgb="255-70-162" src="paint-c4.png" x="360" y="695" sound=""/>	
+			<color rgb="255-0-0" src="paint-c5.png" x="430" y="695" sound=""/>	
+			<color rgb="255-111-0" src="paint-c6.png" x="500" y="695" sound=""/>	
+			<color rgb="255-169-0" src="paint-c7.png" x="570" y="695" sound=""/>	
+			<color rgb="255-255-0" src="paint-c8.png" x="640" y="695" sound=""/>	
+			<color rgb="159-202-82" src="paint-c9.png" x="710" y="695" sound=""/>	
+			<color rgb="28-159-83" src="paint-c10.png" x="779" y="695" sound=""/>	
+			<color rgb="88-88-88" src="paint-c11.png" x="848" y="695" sound=""/>	
+		</colors>
+		<sizes bg="paint-left.png" x="0" y="100">
+			<size value="20" src="paint-small.png" x="30" y="323" sound=""/>
+			<size value="50" src="paint-medium.png" x="25" y="269" sound=""/>		
+			<size value="100" src="paint-big.png" x="19" y="200" sound=""/>		
+		</sizes>
+		<buttons bg="" x="" y="">
+			<clear src="" x="" y="" sound=""/>
+			<photo src="" x="" y="" sound=""/>			
+			<share src="" x="" y="" sound=""/>
+		</buttons>
+	</paint>
+
+	<differences>
+		<imageOk src="ok.png" sound=""/>
+	</differences>
+
+    <arrows strokeSize="8" arrowColor="255-0-0" okSound=""></arrows>
+
+</theme>

@@ -1,14 +1,27 @@
 package com.planetfactory.makerpf.Utils.Actions;
 
+import com.planetfactory.makerpf.MainActivity;
+
+import android.util.Log;
+
 
 public class ActionWrapper{
 
+	//============================================================
+	// VARIABLES
+	//============================================================
 	private String mType;
 	private float mDuration;
 	private float mValueOne;
 	private float mValueTwo;
 	
+	//============================================================
+	// CONSTRUCTORS
+	//============================================================
 	public ActionWrapper(final String pType, final float pDuration, final float pValueOne, final float pValueTwo){
+		
+		Log.v(MainActivity.TAG,"Creating action wrapper with values:" + pType + ":" + pDuration + ":" + pValueOne + ":" + pValueTwo);
+		
 		this.mType = pType;
 		this.mDuration = pDuration;
 		this.mValueOne = pValueOne;
@@ -16,11 +29,16 @@ public class ActionWrapper{
 	}
 	
 	public ActionWrapper(final String pType, final float pDuration, final float pValueOne){
+		Log.v(MainActivity.TAG,"Creating action wrapper with values:" + pType + ":" + pDuration + ":" + pValueOne);
 		this.mType = pType;
 		this.mDuration = pDuration;
 		this.mValueOne = pValueOne;
 	}
 	
+	
+	//============================================================
+	// GETs
+	//============================================================
 	public String getType(){
 		return this.mType;
 	}

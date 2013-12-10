@@ -4,17 +4,23 @@ import java.util.ArrayList;
 
 import org.andengine.entity.IEntity;
 import org.andengine.entity.modifier.IEntityModifier;
-import org.andengine.entity.modifier.MoveModifier;
+import org.andengine.entity.modifier.LoopEntityModifier;
+import org.andengine.entity.modifier.MoveByModifier;
 import org.andengine.entity.modifier.RotationModifier;
 import org.andengine.entity.modifier.ScaleModifier;
 import org.andengine.entity.modifier.SequenceEntityModifier;
 import org.andengine.util.modifier.IModifier;
 
+import android.util.Log;
+
+import com.planetfactory.makerpf.MainActivity;
 import com.planetfactory.makerpf.Utils.MPFSprite;
 
 public class ActionFactory extends SequenceEntityModifier{
 
-
+	//============================================================
+	// CREATE ACTION
+	//============================================================
 	public static SequenceEntityModifier createAction(final MPFSprite pSprite, final ArrayList<ActionWrapper> pActionWrappers){
 		
 		final int size = pActionWrappers.size();
@@ -35,27 +41,35 @@ public class ActionFactory extends SequenceEntityModifier{
 				x = pSprite.getX();
 				y = pSprite.getY();
 				rotation = pSprite.getRotation();
-				scale = pSprite.getScaleX();
+				scale 	 = pSprite.getScaleX();
 			} else {
 				x = pActionWrappers.get(i - 1).getValueOne();
 				y = pActionWrappers.get(i - 1).getValueTwo();
 				rotation = pActionWrappers.get(i - 1).getValueOne();
 				scale = (pSprite.getBaseItem().getScale()  / 1000) * pActionWrappers.get(i - 1).getValueOne();
 			}
-			
+			 
 			// Create 'move' modifier
 			if(wrapper.getType().equals("move")){
+				Log.v(MainActivity.TAG, "Modifier move");
 				modifiers[i] = createMoveModifier(wrapper.getDuration(), x, y, wrapper.getValueOne(), wrapper.getValueTwo());
 			}
 			
 			// Create 'rotation' modifier
 			if(wrapper.getType().equals("rotate")){
+				Log.v(MainActivity.TAG, "Modifier rotate");
 				modifiers[i] = createRotationModifier(wrapper.getDuration(), rotation, wrapper.getValueOne());
 			}
 			
 			// Create 'scale' modifier
 			if(wrapper.getType().equals("scale")){
+				Log.v(MainActivity.TAG, "Modifier scale");
 				modifiers[i] = createScaleModifier(wrapper.getDuration(), scale, (pSprite.getBaseItem().getScale()  / 1000) * wrapper.getValueOne() );
+			}
+			
+			if(wrapper.getType().equals("jump")){
+				modifiers[i] = new LoopEntityModifier(new SequenceEntityModifier(new MoveByModifier(0.2f, 0, -20),
+																				 new MoveByModifier(0.2f, 0, 20)),3); 
 			}
 		}
 		
@@ -81,8 +95,9 @@ public class ActionFactory extends SequenceEntityModifier{
 	/**
 	 * Extract a MoveModifier from the specified parameters
 	 */
-	private static MoveModifier createMoveModifier(final float pDuration, final float pFromX, final float pFromY, final float pToX, final float pToY){
-		return new MoveModifier(pDuration / 1000, pFromX, pFromY, pToX, pToY);
+	private static MoveByModifier createMoveModifier(final float pDuration, final float pFromX, final float pFromY, final float pToX, final float pToY){
+		//return new MoveModifier(pDuration / 1000, pFromX, pFromY, pToX, pToY);
+		return new MoveByModifier(pDuration / 1000,pToX,pToY);
 	}
 	
 	/**

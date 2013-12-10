@@ -1,0 +1,399 @@
+<game>
+	<id val="BFFC2FE6-C118-BD1C-81B8-ED64ACD6545A" />
+	<type type="quiz" />
+	<avatar active="false" />
+	<desc text="Cuestionario Matemáticas" />
+	<page>
+		<background src="FONDO-01.png" scale="noscale" color="15658734" rgb="238-238-238" zoom="0.75"/>
+		<parent id="1" x="512" y="384" scale="1000" rotation="0" src="fons-01.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cuál es el resultado de sumar nueve más cinco? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="1" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Trece"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="1" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Catorce"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="3" parent="1" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Quince"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="1" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Diecises"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="2" x="512" y="384" scale="1000" rotation="0" src="MATES-02.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cuál es el resultado de restar siete menos tres? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="2" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Dos"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="2" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Tres"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="2" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Cuatro"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="4" parent="2" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Cinco"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="3" x="512" y="384" scale="1000" rotation="0" src="MATES-03.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Qué indica éste símbolo % ?  "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="3" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="División"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="3" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Porcentaje"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="3" parent="3" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Dollar"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="3" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Libras"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="4" x="512" y="384" scale="1000" rotation="0" src="MATES-04.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Sigue la secuencia 12, 16, 20,…  "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="4" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="22"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="4" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="24"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="3" parent="4" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="26"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="4" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="28"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="5" x="512" y="384" scale="1000" rotation="0" src="MATES-05.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cuál es el tercer número par? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="5" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="2"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="5" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="3"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="5" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="4"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="5" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="6"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+		</parent>
+		<parent id="6" x="512" y="384" scale="1000" rotation="0" src="MATES-06.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cuántos lados regulares tiene un Hexágono? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="6" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="3"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="6" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="4"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="6" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="5"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="6" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="6"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+		</parent>
+		<parent id="7" x="512" y="384" scale="1000" rotation="0" src="MATES-07.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cómo se llama el triangulo que tiene dos lados iguales? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="7" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Isósceles"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="2" parent="7" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Rectángulo"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="7" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Escaleno"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="7" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Obtusángulo"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="9" x="512" y="384" scale="1000" rotation="0" src="MATES-08.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cómo se llama el triangulo que tiene todos los lados distintos? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="9" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Isósceles"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="9" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Rectángulo"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="9" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Escaleno"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="4" parent="9" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Obtusángulo"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="10" x="512" y="384" scale="1000" rotation="0" src="MATES-09.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cuantos milímetros son 12 centímetros? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="10" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="1,2"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="10" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="12"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="10" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="120"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="10" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="1200"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+		</parent>
+		<parent id="11" x="512" y="384" scale="1000" rotation="0" src="fons-10.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cómo se llama el elemento que mide la mitad del diámetro de la circumferencia? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="11" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Àrea"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="11" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Radio"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="3" parent="11" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Tangente"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="11" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Arco"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+	</page>
+</game>

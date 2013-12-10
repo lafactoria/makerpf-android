@@ -146,6 +146,7 @@ public class ResourceManager {
 		} catch (IOException e) {
 			Log.e(MainActivity.TAG, e.getMessage());
 			e.printStackTrace();
+			return null;
 		}
 		
 		final BitmapTextureAtlas texture = new BitmapTextureAtlas(getEngine().getTextureManager(), mBitmapOptions.outWidth, mBitmapOptions.outHeight, TextureOptions.BILINEAR);

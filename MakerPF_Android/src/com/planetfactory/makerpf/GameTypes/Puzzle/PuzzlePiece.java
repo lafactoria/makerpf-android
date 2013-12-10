@@ -3,6 +3,8 @@ package com.planetfactory.makerpf.GameTypes.Puzzle;
 import org.andengine.entity.modifier.MoveModifier;
 import org.andengine.input.touch.TouchEvent;
 
+import android.view.ViewGroup.MarginLayoutParams;
+
 import com.planetfactory.makerpf.MainActivity;
 import com.planetfactory.makerpf.GameTypes.BaseItem;
 import com.planetfactory.makerpf.Resources.ResourceManager;
@@ -23,18 +25,16 @@ public class PuzzlePiece extends DraggableItem{
 	}
 
 	@Override
-	protected void onMoved(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX,
-			float pTouchAreaLocalY) {
+	protected void onMoved(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX,	float pTouchAreaLocalY) {
 		this.setPosition(pSceneTouchEvent.getX(), MainActivity.HEIGHT - pSceneTouchEvent.getY());
 	}
 
 	@Override
-	protected void onReleased(TouchEvent pSceneTouchEvent,
-			float pTouchAreaLocalX, float pTouchAreaLocalY) {
+	protected void onReleased(TouchEvent pSceneTouchEvent,	float pTouchAreaLocalX, float pTouchAreaLocalY) {
 		final float currentX = this.getX();
 		final float currentY = this.getY();
 		
-		final float finalX = this.getBaseItem().getFinalX();
+		final float finalX = this.getBaseItem().getFinalX() + MainActivity.MARGIN_X;
 		final float finalY = this.getBaseItem().getFinalY();
 		
 		if( Math.abs(currentX - finalX) < 80 && Math.abs(currentY - finalY) < 80){

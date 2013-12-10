@@ -109,12 +109,12 @@ public class InteractivePopup extends Sprite{
 				this.attachChild(mPopupImage);
 			}
 
-			if(mItem.getText(ResourceManager.getLanguage()) != null && !mItem.getText(ResourceManager.getLanguage()).equals("")){
+			if(mItem.getText() != null && !mItem.getText().equals("")){
 				final TextOptions textOptions = new TextOptions();
 				textOptions.setAutoWrap(AutoWrap.WORDS);
 				textOptions.setAutoWrapWidth(this.getWidth() * 0.5f * 0.75f);
 
-				mPopupText = new Text(0, 0, ResourceManager.mFont, mItem.getText(ResourceManager.getLanguage()), textOptions, mResourceManager.getEngine().getVertexBufferObjectManager()){
+				mPopupText = new Text(0, 0, ResourceManager.mFont, mItem.getText(), textOptions, mResourceManager.getEngine().getVertexBufferObjectManager()){
 					@Override
 					protected void onManagedUpdate(float pSecondsElapsed) {
 						if(this.getAlpha() != this.getParent().getAlpha()){

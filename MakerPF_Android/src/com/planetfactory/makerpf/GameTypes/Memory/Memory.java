@@ -3,14 +3,18 @@ package com.planetfactory.makerpf.GameTypes.Memory;
 import java.util.ArrayList;
 
 import org.andengine.audio.sound.Sound;
+import org.andengine.entity.text.Text;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
 import org.andengine.opengl.texture.region.ITextureRegion;
+import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import android.graphics.Point;
+import android.util.Log;
 
+import com.planetfactory.makerpf.MainActivity;
 import com.planetfactory.makerpf.GameTypes.BaseGame;
 import com.planetfactory.makerpf.GameTypes.Item;
 import com.planetfactory.makerpf.Resources.ResourceManager;
@@ -20,6 +24,9 @@ import com.planetfactory.makerpf.Utils.Actions.ActionFactory;
 
 public class Memory extends BaseGame{
 	
+	//============================================================
+	// CONSTANTS
+	//============================================================
 	private static final int CARD_HIDDEN = 0;
 	private static final int CARD_SELECTED = 1;
 	private static final int CARD_MATCHED = 2;
@@ -31,10 +38,14 @@ public class Memory extends BaseGame{
 	private static final String UNDER_CARD_PATH = "under_card.png";
 	
 	private static final String T_POSITION = "position";
+	private static final String T_PIECES = "pieces";
 	private static final String T_CARD = "card";
 
-	private ArrayList<Point> mPositions = new ArrayList<Point>();
-	private ArrayList<Point> mRemainingPoints = new ArrayList<Point>();
+	//============================================================
+	// VARIABLES
+	//============================================================
+	private ArrayList<Point> mPositions 		= new ArrayList<Point>();
+	private ArrayList<Point> mRemainingPoints 	= new ArrayList<Point>();
 	
 	private MPFSprite[] mSelectedCards = new MPFSprite[2];
 	
@@ -51,19 +62,38 @@ public class Memory extends BaseGame{
 	
 	private Sound mCardShowSound;
 	
+	//============================================================
+	// CONSTRUCTOR
+	//============================================================
 	public Memory(ResourceManager pResourceManager) {
 		super(pResourceManager);
 	}
 
+	//============================================================
+	// LOAD RESOURCES
+	//============================================================
 	@Override
 	public void onLoadResources() {
 		super.onLoadResources();
+		
+		Log.v(MainActivity.TAG, "Memory: Load Resources");
 
+		final Document themeDoc = XMLParser.parseXMLFile(mResourceManager.getActivity(), "theme/theme.xml");		
+		final int cardNumber = Integer.valueOf(mGameDocument.getElementsByTagName("cards").item(0).getAttributes().getNamedItem("n").getNodeValue());
+		
 		/*
 		 * Create Positions
 		 */
-		NodeList list = XMLParser.parseDocument(T_PAGE, mGameDocument);
-		Element e = (Element) list.item(0);
+		NodeList list = XMLParser.parseDocument(T_PIECES, themeDoc);
+		
+		Element e;
+		
+		if(cardNumber == 8){
+			e = (Element) list.item(0);
+		} else {
+			e = (Element) list.item(1);
+		}
+		
 		list = e.getElementsByTagName(T_POSITION);
 		
 		for(int i = 0; i < list.getLength(); i++){
@@ -80,22 +110,61 @@ public class Memory extends BaseGame{
 		/*
 		 * Create Card/Under Card textures
 		 */
+		list = XMLParser.parseDocument(T_PAGE, mGameDocument);
+		e = (Element) list.item(0);
 		list = e.getElementsByTagName(T_CARD);
-		String texturePath = mResourceManager.getAssetPath() + IMAGES_FOLDER + ((Element)list.item(0)).getAttribute(A_SRC);
+		String texturePath = ResourceManager.getAssetPath() + IMAGES_FOLDER + ((Element)list.item(0)).getAttribute(A_SRC);
 		this.mTextures.add(mResourceManager.createSizedTexture(texturePath));
 		mCardTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mTextures.get(mTextures.size() - 1), mResourceManager.getActivity(), texturePath, 0, 0);
 		
-		texturePath = mResourceManager.getAssetPath() + IMAGES_FOLDER + UNDER_CARD_PATH;
+		texturePath = ResourceManager.getAssetPath() + IMAGES_FOLDER + UNDER_CARD_PATH;
 		this.mTextures.add(mResourceManager.createSizedTexture(texturePath));
 		mUnderCardTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mTextures.get(mTextures.size() - 1), mResourceManager.getActivity(), texturePath, 0, 0);
-	
+		
 		/*
 		 * Load Card Sounds
 		 */
-		final String soundPath = mResourceManager.getAssetPath() + BaseGame.SOUNDS_FOLDER + CARD_SHOW_PATH;
+		final String soundPath = ResourceManager.getAssetPath() + BaseGame.SOUNDS_FOLDER + CARD_SHOW_PATH;
 		mCardShowSound = mResourceManager.getSoundManager().loadSound(soundPath);
+	}	
+	
+	//============================================================
+	// LOAD POSITIONS
+	//============================================================
+	private void loadPositions(){
+		final Document themeDoc = XMLParser.parseXMLFile(mResourceManager.getActivity(), "theme/theme.xml");		
+		final int cardNumber = Integer.valueOf(mGameDocument.getElementsByTagName("cards").item(0).getAttributes().getNamedItem("n").getNodeValue());
+		
+		/*
+		 * Create Positions
+		 */
+		NodeList list = XMLParser.parseDocument(T_PIECES, themeDoc);
+		
+		Element e;
+		
+		if(cardNumber == 8){
+			e = (Element) list.item(0);
+		} else {
+			e = (Element) list.item(1);
+		}
+		
+		list = e.getElementsByTagName(T_POSITION);
+		
+		for(int i = 0; i < list.getLength(); i++){
+			final Element element = (Element) list.item(i);
+			
+			final int x = Integer.valueOf(element.getAttribute(Item.A_X));
+			final int y = Integer.valueOf(element.getAttribute(Item.A_Y));
+			
+			final Point point = new Point(x, y);
+			
+			mPositions.add(point);
+		}
 	}
 
+	//============================================================
+	// ON UNLOAD
+	//============================================================
 	@Override
 	public void onUnloadResources() {
 		mSelectedCards[0] = null;
@@ -109,14 +178,23 @@ public class Memory extends BaseGame{
 		mAreTwoCardsSelected = false;
 	}
 
+	//============================================================
+	// ON POPULATE
+	//============================================================
 	@Override
 	public void onPopulate() {
 		super.onPopulate();
 
+		Log.v(MainActivity.TAG,"Populating Memory: Item count: " + mPositions.size());
 		// Repopulate the mRemainingPoints with the points from XML
 		mRemainingPoints = mPositions;
 		
-		final int itemCount = mPositions.size();
+		int itemCount = mPositions.size();
+		
+		if(itemCount == 0){
+			loadPositions();
+			itemCount = mPositions.size();
+		}
 		mEndGameCount = itemCount;
 		
 		for(int i = 0; i < itemCount; i++){
@@ -131,18 +209,26 @@ public class Memory extends BaseGame{
 			final MPFSprite underCardSprite = new MPFSprite(position.x, position.y, mUnderCardTextureRegion, mResourceManager.getEngine().getVertexBufferObjectManager());
 			underCardSprite.setScale(item.getScale());
 			this.attachChild(underCardSprite);
+			underCardSprite.setPosition(underCardSprite.getX() + MainActivity.MARGIN_X, underCardSprite.getY());
 
 			// Attach the item sprite
 			final MPFSprite sprite = new MPFSprite(item, mResourceManager);
 			sprite.setPosition(position.x, position.y);
 			this.attachChild(sprite);
+			sprite.setPosition(sprite.getX() + MainActivity.MARGIN_X, sprite.getY());
+			
+			if(item.getKind() > 1){
+				final Text text = new Text(sprite.getWidth() * 0.5f, sprite.getHeight() * 0.5f, mResourceManager.mFont, item.getText(), mResourceManager.getEngine().getVertexBufferObjectManager());
+				text.setColor(item.getColor());
+				sprite.attachChild(text);
+				sprite.setAlpha(0);
+			}
 			
 			// Attach the card sprite
 			final MPFSprite cardSprite = new MPFSprite(position.x, position.y, mCardTextureRegion, mResourceManager.getEngine().getVertexBufferObjectManager()){
 
 				@Override
-				public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
-						float pTouchAreaLocalX, float pTouchAreaLocalY) {
+				public boolean onAreaTouched(TouchEvent pSceneTouchEvent,float pTouchAreaLocalX, float pTouchAreaLocalY) {
 
 					if(pSceneTouchEvent.isActionDown() && this.getTag() == CARD_HIDDEN && mSelectedCards[1] == null && mCanSelectCards){
 						
@@ -172,9 +258,9 @@ public class Memory extends BaseGame{
 			cardSprite.setBaseItem(item);
 			cardSprite.setScale(item.getScale());
 			this.attachChild(cardSprite);
+			cardSprite.setPosition(cardSprite.getX() + MainActivity.MARGIN_X, cardSprite.getY());
 			
 			mResourceManager.getScene().registerTouchArea(cardSprite);
-			
 		}
 		
 		super.onPopulateFinal();

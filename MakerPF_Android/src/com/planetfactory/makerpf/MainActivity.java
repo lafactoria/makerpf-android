@@ -9,12 +9,13 @@ import org.andengine.engine.camera.Camera;
 import org.andengine.engine.options.EngineOptions;
 import org.andengine.engine.options.ScreenOrientation;
 import org.andengine.engine.options.WakeLockOptions;
-import org.andengine.engine.options.resolutionpolicy.RatioResolutionPolicy;
+import org.andengine.engine.options.resolutionpolicy.FillResolutionPolicy;
 import org.andengine.entity.scene.Scene;
 import org.andengine.ui.activity.LayoutGameActivity;
 
 import android.util.SparseArray;
 
+import com.flurry.android.FlurryAgent;
 import com.planetfactory.makerpf.GameTypes.BaseGame;
 import com.planetfactory.makerpf.GameTypes.GameSelector;
 import com.planetfactory.makerpf.Layers.Main.Main;
@@ -27,11 +28,16 @@ public class MainActivity extends LayoutGameActivity {
 	// ===========================================================
 	// CONSTANTS
 	// ===========================================================
-	public static final String	TAG = "MAKERPF";
-	public static final int		WIDTH = 1024;
-	public static final int		HEIGHT = 768;
-	
-	// ===========================================================
+	public static final String	TAG 		= "MAKERPF"; 
+	//public static final int		WIDTH = 1024;
+	public static final int 	WIDTH 		= 1280;
+	public static final int		HEIGHT 		= 768;
+	public static final int		MARGIN_X	= (WIDTH - 1024)/2;
+	 
+	public static final boolean	FLURRY_ENABLED 	= true; 
+	public static final String 	FLURRY_KEY 		= "JDB4S39QMG2XZDVHMCJ9";
+ 	
+	// =========================================================== 
 	// FIELDS
 	// ===========================================================
 	private Scene				mScene = new Scene();
@@ -50,7 +56,7 @@ public class MainActivity extends LayoutGameActivity {
 	 * Game Layers
 	 */
 	public static SparseArray<BaseGame> mGames = new SparseArray<BaseGame>();
-	
+	 
 	public static boolean mIsCoverActive = true;
 	public static boolean mIsMenuActive = true;
 
@@ -61,7 +67,8 @@ public class MainActivity extends LayoutGameActivity {
 	public EngineOptions onCreateEngineOptions() {
 		mCamera = new Camera(0, 0, WIDTH, HEIGHT);
 		
-		EngineOptions engineOptions = new EngineOptions(true,ScreenOrientation.LANDSCAPE_FIXED, new RatioResolutionPolicy(WIDTH, HEIGHT), mCamera);
+		//EngineOptions engineOptions = new EngineOptions(true,ScreenOrientation.LANDSCAPE_FIXED, new RatioResolutionPolicy(WIDTH, HEIGHT), mCamera);
+		EngineOptions engineOptions = new EngineOptions(true,ScreenOrientation.LANDSCAPE_FIXED, new FillResolutionPolicy(), mCamera);
 
 		engineOptions.getAudioOptions().setNeedsMusic(true);
 		engineOptions.getAudioOptions().setNeedsSound(true);
@@ -97,12 +104,11 @@ public class MainActivity extends LayoutGameActivity {
 		mResourceManager.loadSounds();
 		mResourceManager.loadFonts();
 		mResourceManager.loadTextures();
-		pOnCreateResourcesCallback.onCreateResourcesFinished();
-		
-	}
+		pOnCreateResourcesCallback.onCreateResourcesFinished(); 		
+	} 
 
 	// ===========================================================
-	// ON CREATE SCENE
+	// ON CREATE SCENE  
 	// ===========================================================
 	@Override
 	public void onCreateScene(OnCreateSceneCallback pOnCreateSceneCallback)	throws IOException {
@@ -125,8 +131,7 @@ public class MainActivity extends LayoutGameActivity {
 	// ===========================================================
 	@Override
 	public void onPopulateScene(Scene pScene, OnPopulateSceneCallback pOnPopulateSceneCallback)	throws IOException {
-		GameSelector.loadGame(GameSelector.MAIN_ID);
-		
+		GameSelector.loadGame(GameSelector.MAIN_ID);		
 		pOnPopulateSceneCallback.onPopulateSceneFinished();		
 	}	
 	
@@ -201,4 +206,22 @@ public class MainActivity extends LayoutGameActivity {
 	@Override	protected int getLayoutID() 			{ return R.layout.activity_main;					}
 	@Override	protected int getRenderSurfaceViewID() 	{ return R.id.gameRendersurfaceview;	}
 
+	
+	// ========================================================================== //
+	// == FLURRY
+	// ========================================================================== //
+	@Override
+	protected void onStart() {
+		super.onStart();
+		if(FLURRY_ENABLED)
+			FlurryAgent.onStartSession(this, FLURRY_KEY);
+	}
+	
+	@Override
+	protected void onStop() {
+		super.onStop();
+		if(FLURRY_ENABLED)
+			FlurryAgent.onEndSession(this);
+	}
+    
 }

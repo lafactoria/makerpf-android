@@ -32,6 +32,7 @@
 
     <LinearLayout
         android:id="@+id/brush_color_layout"
+        android:orientation="horizontal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -66,8 +67,8 @@
 
     <LinearLayout
         android:id="@+id/brush_size_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="150dp"
         android:layout_below="@+id/home_button"
         android:background="@drawable/paint_left"
         android:gravity="center_horizontal"
@@ -75,29 +76,29 @@
 
         <ImageView
             android:id="@+id/size_big_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:src="@drawable/paint_big" />
 
         <ImageView
             android:id="@+id/size_medium_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_alignLeft="@+id/size_selected_view"
             android:layout_alignParentBottom="true"
             android:src="@drawable/paint_medium" />
 
         <ImageView
             android:id="@+id/size_small_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:adjustViewBounds="false"
             android:src="@drawable/paint_small" />
 
         <ImageView
             android:id="@+id/size_selected_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/paint_medium" />
     </LinearLayout>
 

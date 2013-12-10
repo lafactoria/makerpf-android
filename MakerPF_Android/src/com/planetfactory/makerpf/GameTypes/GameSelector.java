@@ -15,6 +15,7 @@ import com.planetfactory.makerpf.GameTypes.InteractiveImages.InteractiveImages;
 import com.planetfactory.makerpf.GameTypes.ListenAndDrag.ListenAndDrag;
 import com.planetfactory.makerpf.GameTypes.ListenAndTouch.ListenAndTouch;
 import com.planetfactory.makerpf.GameTypes.Memory.Memory;
+import com.planetfactory.makerpf.GameTypes.Paint.DumbPaint;
 import com.planetfactory.makerpf.GameTypes.Paint.PaintCanvas;
 import com.planetfactory.makerpf.GameTypes.Puzzle.Puzzle;
 import com.planetfactory.makerpf.GameTypes.Quiz.Quiz;
@@ -25,20 +26,28 @@ import com.planetfactory.makerpf.Utils.XMLParser;
 
 public class GameSelector {
 	
+	//========================================================
+	// CONSTANTS
+	//========================================================
 	public static final int MAIN_ID = 12353266;
 	public static final int MENU_ID = 22535124;
 	
+	//========================================================
+	// VARIABLES
+	//========================================================
 	public static BaseLayer mCurrentLayer;
 	public static int mCurrentID = MAIN_ID;
 	
 	private static ResourceManager mResourceManager;
 	
+	//========================================================
+	// LOAD GAME
+	//========================================================
 	public static void loadGame(final int pId){
 		if(pId == MAIN_ID){
 			mCurrentLayer = MainActivity.mMain.loadResources();
-			mCurrentID = MAIN_ID;
-			
-			
+			mCurrentID = MAIN_ID; 
+						
 		} else if(pId == MENU_ID){
 			mCurrentLayer = MainActivity.mMenu.loadResources();
 			mCurrentID = MENU_ID;
@@ -46,7 +55,15 @@ public class GameSelector {
 		} else if(MainActivity.mGames.indexOfKey(pId) >= 0){
 			mResourceManager.setAssetPath(MainActivity.mGames.get(pId).getGamePath());
 			
-			if(MainActivity.mGames.get(pId) == null){
+			Log.v(MainActivity.TAG,"Game ID:" + pId);
+			Log.v(MainActivity.TAG,"Game type:" + MainActivity.mGames.get(pId).getType());
+			
+			boolean isPaint = false;
+			if(MainActivity.mGames.get(pId).getType() != null && MainActivity.mGames.get(pId).getType().equals("paint")){
+				isPaint = true;
+			}
+						
+			if(MainActivity.mGames.get(pId) == null || isPaint){
 				ResourceManager.mPaintDocument = XMLParser.parseXMLFile(mResourceManager.getActivity(), mResourceManager.getAssetPath()  + BaseGame.XML_GAME);
 				mResourceManager.getActivity().startActivity(new Intent(mResourceManager.getActivity(), PaintCanvas.class));
 			} else {
@@ -74,7 +91,7 @@ public class GameSelector {
 		} else if(pGameType.equals("dragtocontainers")){
 			baseGame = new DragToContainers(pResourceManager);
 		} else if(pGameType.equals("paint")){
-			//baseGame = new Paint(pResourceManager);
+			baseGame = new DumbPaint(pResourceManager);
 		} else if(pGameType.equals("findme")){
 			baseGame = new FindMe(pResourceManager);
 		} else if(pGameType.equals("puzzle")){

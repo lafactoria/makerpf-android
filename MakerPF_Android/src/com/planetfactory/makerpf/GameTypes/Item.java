@@ -7,7 +7,7 @@ import org.w3c.dom.Element;
 
 import com.planetfactory.makerpf.Resources.ResourceManager;
 
-public class Item extends BaseItem{
+public class Item extends BaseItem {
 
 	public Item(Element pElement, Vector<BitmapTextureAtlas> pTextures, ResourceManager pResourceManager) {
 		super(pElement, pTextures, pResourceManager);

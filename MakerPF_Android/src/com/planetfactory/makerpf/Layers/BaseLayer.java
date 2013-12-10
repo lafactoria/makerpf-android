@@ -94,9 +94,10 @@ public abstract class BaseLayer extends Entity{
 			}
 			//mResourcesListener.onResourcesLoaded();
 			
-			if(!BaseLayer.this.hasParent())
-			mResourceManager.getScene().attachChild(BaseLayer.this);
-			Log.d(MainActivity.TAG, "Populating new game");
+			if(!BaseLayer.this.hasParent()){
+				mResourceManager.getScene().attachChild(BaseLayer.this);
+				Log.d(MainActivity.TAG, "Populating new game");
+			}
 
 			mIsLoading = true;
 		}

@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import org.andengine.entity.modifier.DelayModifier;
 import org.andengine.entity.modifier.MoveModifier;
 import org.andengine.entity.modifier.SequenceEntityModifier;
+import org.andengine.entity.text.Text;
 
+import com.planetfactory.makerpf.MainActivity;
 import com.planetfactory.makerpf.GameTypes.BaseGame;
 import com.planetfactory.makerpf.GameTypes.Item;
 import com.planetfactory.makerpf.GameTypes.Parent;
@@ -59,6 +61,14 @@ public class FastDrag extends BaseGame implements IDraggableItemListener{
 			final MPFSprite parentSprite = new MPFSprite(parent, mResourceManager);
 			this.attachChild(parentSprite);
 			
+			if(parent.getKind() > 1){
+				final Text text = new Text(parentSprite.getWidth() * 0.5f, parentSprite.getHeight() * 0.5f, mResourceManager.mFont, parent.getText(), mResourceManager.getEngine().getVertexBufferObjectManager());
+				text.setColor(parent.getColor());
+				parentSprite.attachChild(text);
+				parentSprite.setAlpha(0);
+			}
+			parentSprite.setPosition(parentSprite.getX() + MainActivity.MARGIN_X, parentSprite.getY());
+			
 			// Attach items belonging to each parent
 			for(int j = 0; j < parent.getItems().size(); j++){
 				final Item item = parent.getItems().get(j);
@@ -75,7 +85,14 @@ public class FastDrag extends BaseGame implements IDraggableItemListener{
 				
 				final int randomValue = mSpawnSequence.remove((int) (Math.random() * mSpawnSequence.size()));
 				
-				itemSprite.registerEntityModifier(new SequenceEntityModifier(new DelayModifier(randomValue), new MoveModifier(0.3f, randomX, randomY, item.getX(), item.getY())));
+				itemSprite.registerEntityModifier(new SequenceEntityModifier(new DelayModifier(randomValue), new MoveModifier(0.3f, randomX, randomY, item.getX() + MainActivity.MARGIN_X, item.getY())));
+		
+				if(item.getKind() > 1){
+					final Text text = new Text(itemSprite.getWidth() * 0.5f, itemSprite.getHeight() * 0.5f, mResourceManager.mFont, item.getText(), mResourceManager.getEngine().getVertexBufferObjectManager());
+					text.setColor(item.getColor());
+					itemSprite.attachChild(text);
+					itemSprite.setAlpha(0);
+				}
 			}
 		}
 		

@@ -194,8 +194,7 @@ public class InstructionBox extends Rectangle{
 		mNextButtonSprite = new MPFSprite(mPopupBgSprite.getWidth() - BUTTON_DIMENSIONS - 16, BUTTON_DIMENSIONS + 8, BUTTON_DIMENSIONS, BUTTON_DIMENSIONS, false, mNextButtonTextureRegion, mResourceManager.getEngine().getVertexBufferObjectManager()){
 
 			@Override
-			public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
-					float pTouchAreaLocalX, float pTouchAreaLocalY) {
+			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				if(pSceneTouchEvent.isActionDown() && InstructionBox.this.getAlpha() == 0.5f){
 					mAlphaModifier.reset(1, 0.5f, 0);
 					InstructionBox.this.registerEntityModifier(mAlphaModifier);
@@ -203,13 +202,10 @@ public class InstructionBox extends Rectangle{
 					if(mLongSounds.get(ResourceManager.getLanguage()) != null){
 						mLongSounds.get(ResourceManager.getLanguage()).pause();
 					}
-
 					return true;
 				}
-
 				return false;
 			}
-			
 		};
 		mResourceManager.getScene().registerTouchArea(mNextButtonSprite);
 		mPopupBgSprite.attachChild(mNextButtonSprite);
@@ -239,8 +235,7 @@ public class InstructionBox extends Rectangle{
 			mSoundButtonSprite = new MPFSprite(BUTTON_DIMENSIONS + 16, BUTTON_DIMENSIONS + 8, BUTTON_DIMENSIONS, BUTTON_DIMENSIONS, false, mSoundButtonTextureRegion, mResourceManager.getEngine().getVertexBufferObjectManager()){
 
 				@Override
-				public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
-						float pTouchAreaLocalX, float pTouchAreaLocalY) {
+				public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 
 					if(pSceneTouchEvent.isActionDown() && InstructionBox.this.getAlpha() == 0.5f){
 						mLongSounds.get(ResourceManager.getLanguage()).seekTo(0);
@@ -285,16 +280,13 @@ public class InstructionBox extends Rectangle{
 			final float y = mPopupBgSprite.getHeight() - 35;
 
 			if(mImageEnabled){
-				textOptions.setAutoWrapWidth(mPopupBgSprite.getWidth() * 0.5f - 20);
-
+				textOptions.setAutoWrapWidth(mPopupBgSprite.getWidth() * 0.5f - 100);
 				x = mPopupBgSprite.getWidth() * 0.5f;
 
 			} else {
-				textOptions.setAutoWrapWidth(mPopupBgSprite.getWidth() - 40);
-
+				textOptions.setAutoWrapWidth(mPopupBgSprite.getWidth() - 100);
 				x = 50;
 			}
-
 
 			mText = new Text(0, 0, ResourceManager.mFont, mTexts.get(ResourceManager.getLanguage()), mTexts.get(ResourceManager.getLanguage()).length(), textOptions, mResourceManager.getEngine().getVertexBufferObjectManager());
 			mText.setAnchorCenter(0, 1);

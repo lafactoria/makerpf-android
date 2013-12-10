@@ -6,11 +6,10 @@ import org.andengine.entity.scene.IOnAreaTouchListener;
 import org.andengine.entity.scene.IOnSceneTouchListener;
 import org.andengine.entity.scene.ITouchArea;
 import org.andengine.entity.scene.Scene;
+import org.andengine.entity.text.Text;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
 import org.andengine.opengl.texture.region.ITextureRegion;
-
-import android.util.Log;
 
 import com.planetfactory.makerpf.MainActivity;
 import com.planetfactory.makerpf.GameTypes.BaseGame;
@@ -53,7 +52,6 @@ public class Arrows extends BaseGame implements IOnSceneTouchListener, IOnAreaTo
 		String texturePath = IMAGES_FOLDER + ARROW_TIP_PATH;
 		this.mTextures.add(mResourceManager.createSizedTexture(texturePath));
 		mArrowTipTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mTextures.get(mTextures.size() - 1), mResourceManager.getActivity(), texturePath, 0, 0);	
-	
 	}
 
 	@Override
@@ -63,7 +61,6 @@ public class Arrows extends BaseGame implements IOnSceneTouchListener, IOnAreaTo
 		mResourceManager.getScene().setOnAreaTouchListener(null);
 		mResourceManager.getScene().setTouchAreaBindingOnActionDownEnabled(true);
 
-		
 		mCurrentMatchedCount = 0;
 		mTotalMatchCount = 0;
 	}
@@ -83,10 +80,19 @@ public class Arrows extends BaseGame implements IOnSceneTouchListener, IOnAreaTo
 			final Parent parent = mParents.get(i);
 			
 			final MPFSprite parentSprite = new MPFSprite(parent, mResourceManager);
+			
 			mResourceManager.getScene().registerTouchArea(parentSprite);
 			parentSprite.setUserData(PARENT);
 			parentSprite.setTag(UNMATCHED);
 			this.attachChild(parentSprite);
+			
+			if(parent.getKind() > 1){
+				final Text text = new Text(parentSprite.getWidth() * 0.5f, parentSprite.getHeight() * 0.5f, mResourceManager.mFont, parent.getText(), mResourceManager.getEngine().getVertexBufferObjectManager());
+				text.setColor(parent.getColor());
+				parentSprite.attachChild(text);
+				parentSprite.setAlpha(0);
+			}
+			parentSprite.setPosition(parentSprite.getX() + MainActivity.MARGIN_X, parentSprite.getY());
 			
 			mTotalMatchCount += parent.getItems().size();
 			
@@ -99,6 +105,14 @@ public class Arrows extends BaseGame implements IOnSceneTouchListener, IOnAreaTo
 				itemSprite.setUserData(CHILD);
 				itemSprite.setTag(UNMATCHED);
 				this.attachChild(itemSprite);
+				
+				if(item.getKind() > 1){
+					final Text text = new Text(itemSprite.getWidth() * 0.5f, itemSprite.getHeight() * 0.5f, mResourceManager.mFont, item.getText(), mResourceManager.getEngine().getVertexBufferObjectManager());
+					text.setColor(item.getColor());
+					itemSprite.attachChild(text);
+					itemSprite.setAlpha(0);
+				}
+				itemSprite.setPosition(itemSprite.getX() + MainActivity.MARGIN_X, itemSprite.getY());
 			}
 		}
 		

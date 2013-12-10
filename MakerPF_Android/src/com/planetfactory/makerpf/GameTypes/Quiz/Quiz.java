@@ -7,6 +7,9 @@ import org.andengine.entity.text.Text;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
 import org.andengine.opengl.texture.region.ITextureRegion;
+import org.andengine.util.adt.color.Color;
+
+import android.util.Log;
 
 import com.planetfactory.makerpf.MainActivity;
 import com.planetfactory.makerpf.GameTypes.BaseGame;
@@ -108,8 +111,7 @@ public class Quiz extends BaseGame{
 		this.mSoundButtonSprite = new MPFSprite(mBackButtonSprite.getX() + mSoundButtonTextureRegion.getWidth() + 5, mBackButtonSprite.getY(), mSoundButtonTextureRegion, mResourceManager.getEngine().getVertexBufferObjectManager()){
 
 			@Override
-			public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
-					float pTouchAreaLocalX, float pTouchAreaLocalY) {
+			public boolean onAreaTouched(TouchEvent pSceneTouchEvent,float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				if(pSceneTouchEvent.isActionDown()){
 					
 					if(mCurrentPage != null){
@@ -132,6 +134,7 @@ public class Quiz extends BaseGame{
 		}
 		
 		mTotalQuestions = mParents.size();
+		Log.v(MainActivity.TAG,"Total Questions:"+ mTotalQuestions);
 		
 		// Once pages are created, we select and attach a single one
 		getNextPage();
@@ -280,7 +283,7 @@ public class Quiz extends BaseGame{
 		
 		final String correctCountString = mCorrectQuestions + "/" + mTotalQuestions;
 		
-		final Text correctCountText = new Text(mFinalPopup.getArrowSprite().getX(), mFinalPopup.getArrowSprite().getY() + mFinalPopup.getArrowSprite().getHeight() + ResourceManager.mLargeFont.getLineHeight(), ResourceManager.mLargeFont, correctCountString, mResourceManager.getEngine().getVertexBufferObjectManager()){
+		final Text correctCountText = new Text(mFinalPopup.getArrowSprite().getX(), mFinalPopup.getArrowSprite().getY() + mFinalPopup.getArrowSprite().getHeight() + ResourceManager.mLargeFont.getLineHeight() - 15, ResourceManager.mLargeFont, correctCountString, mResourceManager.getEngine().getVertexBufferObjectManager()){
 			@Override
 			protected void onManagedUpdate(float pSecondsElapsed) {
 				if(this.getAlpha() != this.getParent().getAlpha()){
@@ -289,6 +292,7 @@ public class Quiz extends BaseGame{
 				super.onManagedUpdate(pSecondsElapsed);
 			}
 		};
+		correctCountText.setColor(Color.BLACK);
 		mFinalPopup.attachChild(correctCountText);
 		
 		this.mFinalPopup.showPopup(true);

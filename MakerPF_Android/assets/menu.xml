@@ -1,0 +1,21 @@
+<game>
+	<menu>
+		<background src="none.png" scale="noscale" color="15658734" rgb="238-238-238" zoom="0.75"/>
+		<mode id="0" />
+			<menuItem id="1" src="bt_differences.png" x="255" y="255" scale="1000" rotation="0" game="Differences_14ECCAA2-B004-70A6-70E9-E3164202407A" type="differences">
+ 				<precedences>
+ 					<precedence id="0" />
+				</precedences>
+			</menuItem>
+			<menuItem id="2" src="bt_arrows.png" x="776" y="152" scale="1000" rotation="0" game="Arrows_BDCC5561-EEEB-8FC7-D62E-E31C7EB572BF" type="arrows">
+ 				<precedences>
+ 					<precedence id="0" />
+				</precedences>
+			</menuItem>
+			<menuItem id="3" src="bt_quiz.png" x="512" y="384" scale="1000" rotation="0" game="Quiz_F2E54F62-6AE5-4050-DD56-E31FFB390BB0" type="quiz">
+ 				<precedences>
+ 					<precedence id="0" />
+				</precedences>
+			</menuItem>
+	</menu>
+</game>

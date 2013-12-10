@@ -19,29 +19,20 @@ public class MPFSprite extends Sprite{
 		this.setRotation(pBaseItem.getRotation());
 	}
 	
-	public MPFSprite(float pX, float pY, float pWidth, float pHeight,
-			ITextureRegion pTextureRegion,
-			VertexBufferObjectManager pVertexBufferObjectManager) {
+	public MPFSprite(float pX, float pY, float pWidth, float pHeight, ITextureRegion pTextureRegion, VertexBufferObjectManager pVertexBufferObjectManager) {
 		super(pX, MainActivity.HEIGHT - pY, pWidth, pHeight, pTextureRegion, pVertexBufferObjectManager);
-
 	}
 	
-	public MPFSprite(float pX, float pY, ITextureRegion pTextureRegion,
-			VertexBufferObjectManager pVertexBufferObjectManager) {
+	public MPFSprite(float pX, float pY, ITextureRegion pTextureRegion, VertexBufferObjectManager pVertexBufferObjectManager) {
 		super(pX, MainActivity.HEIGHT - pY, pTextureRegion, pVertexBufferObjectManager);
-
 	}
 	
-	public MPFSprite(float pX, float pY, float pWidth, float pHeight, boolean pInvertY, ITextureRegion pTextureRegion,
-			VertexBufferObjectManager pVertexBufferObjectManager) {
+	public MPFSprite(float pX, float pY, float pWidth, float pHeight, boolean pInvertY, ITextureRegion pTextureRegion, VertexBufferObjectManager pVertexBufferObjectManager) {
 		super(pX, (pInvertY)? (MainActivity.HEIGHT - pY) : pY, pWidth, pHeight, pTextureRegion, pVertexBufferObjectManager);
-
 	}
 	
-	public MPFSprite(float pX, float pY, boolean pInvertY, ITextureRegion pTextureRegion,
-			VertexBufferObjectManager pVertexBufferObjectManager) {
+	public MPFSprite(float pX, float pY, boolean pInvertY, ITextureRegion pTextureRegion, VertexBufferObjectManager pVertexBufferObjectManager) {
 		super(pX, (pInvertY)? (MainActivity.HEIGHT - pY) : pY, pTextureRegion, pVertexBufferObjectManager);
-
 	}
 
 	public void setBaseItem(final BaseItem pBaseItem){

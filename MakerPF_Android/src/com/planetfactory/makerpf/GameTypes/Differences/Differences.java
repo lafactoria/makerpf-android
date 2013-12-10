@@ -3,6 +3,7 @@ package com.planetfactory.makerpf.GameTypes.Differences;
 import java.util.ArrayList;
 
 import org.andengine.entity.modifier.AlphaModifier;
+import org.andengine.entity.text.Text;
 import org.andengine.input.touch.TouchEvent;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -66,7 +67,7 @@ public class Differences extends BaseGame{
 			    y = (384 * i) + (image.getTextureRegion().getHeight() * 0.5f);
 			    
 			    itemX = 0;
-			    itemY = 384 * i;
+			    itemY = 384 * i + 140;
 			}
 
 			if(this.mOrientationValue.equals("vertical")){
@@ -75,9 +76,9 @@ public class Differences extends BaseGame{
 			    
 			    itemX = 512 * i;
 			    itemY = 0;
-			}
+			} 
 			
-			final MPFSprite sprite = new MPFSprite(x, y, image.getTextureRegion(), mResourceManager.getEngine().getVertexBufferObjectManager());
+			final MPFSprite sprite = new MPFSprite(x + 120, y, image.getTextureRegion(), mResourceManager.getEngine().getVertexBufferObjectManager());
 			this.attachChild(sprite);
 			
 			for(int j = 0; j < mItems.size(); j++){
@@ -109,14 +110,22 @@ public class Differences extends BaseGame{
 						}
 						
 						return false;
-					}
-					
+					}					
 				};
 				itemSprite.setTag(j);
-				itemSprite.setPosition(item.getX() + itemX, item.getY() + itemY);
-				itemSprite.setAlpha(0);
+				itemSprite.setPosition(item.getX() + itemX , item.getY() + itemY);
+				itemSprite.setAlpha(0);				
 				this.attachChild(itemSprite);
 				mResourceManager.getScene().registerTouchArea(itemSprite);
+				
+				if(item.getKind() > 1){
+					final Text text = new Text(itemSprite.getWidth() * 0.5f, itemSprite.getHeight() * 0.5f, mResourceManager.mFont, item.getText(), mResourceManager.getEngine().getVertexBufferObjectManager());
+					text.setColor(item.getColor());
+					itemSprite.attachChild(text);
+					itemSprite.setAlpha(0);
+				}
+				
+				itemSprite.setPosition(itemSprite.getX() /*+ MainActivity.MARGIN_X*/, itemSprite.getY());
 				
 				mDifferences.add(itemSprite);
 			}

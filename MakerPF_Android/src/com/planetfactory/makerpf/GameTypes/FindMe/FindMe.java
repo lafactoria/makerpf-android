@@ -6,6 +6,7 @@ import org.andengine.entity.modifier.ParallelEntityModifier;
 import org.andengine.entity.modifier.RotationModifier;
 import org.andengine.entity.modifier.ScaleModifier;
 import org.andengine.entity.modifier.SequenceEntityModifier;
+import org.andengine.entity.text.Text;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.util.modifier.IModifier;
 
@@ -57,7 +58,6 @@ public class FindMe extends BaseGame{
 		float y = (MainActivity.HEIGHT - 135) / ROWS;
 		
 		for(int i = 0; i < ROWS; i++){
-			
 			
 			for(int j = 0; j < COLUMNS; j++){
 				
@@ -113,6 +113,13 @@ public class FindMe extends BaseGame{
 					this.attachChild(sprite);
 					mResourceManager.getScene().registerTouchArea(sprite);
 					
+					if(item.getKind() > 1){
+						final Text text = new Text(sprite.getWidth() * 0.5f, sprite.getHeight() * 0.5f, mResourceManager.mFont, item.getText(), mResourceManager.getEngine().getVertexBufferObjectManager());
+						text.setColor(item.getColor());
+						sprite.attachChild(text);
+						sprite.setAlpha(0);
+					}
+					
 				} else {
 					
 					int itemIndex = -1;
@@ -127,6 +134,13 @@ public class FindMe extends BaseGame{
 					sprite.setSize(width - 15, height - 15);
 					sprite.setPosition(width * j + width * 0.5f + 30, height * i + height * 0.5f + 10);
 					this.attachChild(sprite);
+					
+					if(item.getKind() > 1){
+						final Text text = new Text(sprite.getWidth() * 0.5f, sprite.getHeight() * 0.5f, mResourceManager.mFont, item.getText(), mResourceManager.getEngine().getVertexBufferObjectManager());
+						text.setColor(item.getColor());
+						sprite.attachChild(text);
+						sprite.setAlpha(0);
+					}
 				}
 			}
 		}

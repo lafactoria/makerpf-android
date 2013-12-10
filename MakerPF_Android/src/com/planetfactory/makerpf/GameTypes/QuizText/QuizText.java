@@ -7,11 +7,16 @@ import org.andengine.entity.text.Text;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
 import org.andengine.opengl.texture.region.ITextureRegion;
+import org.andengine.util.adt.color.Color;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.text.Editable;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
 import android.widget.EditText;
 
 import com.planetfactory.makerpf.MainActivity;
@@ -30,7 +35,7 @@ public class QuizText extends BaseGame{
 	private static final String INPUT_STRING = "input.png";
 	private static final String NEXT_QUESTION_PATH = "nextQuestion.png";
 	
-	private static final String DEFAULT_INPUT_TEXT = "Click to type";
+	private static final String DEFAULT_INPUT_TEXT = "                           ";
 	
 	private ITextureRegion mInputTextureRegion;
 	private Sprite mInputSprite;
@@ -59,6 +64,9 @@ public class QuizText extends BaseGame{
 	
 	private Text mInputText;
 	private String mAnswer;
+	
+	private EditText mInput;
+	private AlertDialog mAlertdialog;
 	
 	public QuizText(ResourceManager pResourceManager) {
 		super(pResourceManager);
@@ -140,8 +148,7 @@ public class QuizText extends BaseGame{
 		final Sprite nextQuestionSprite = new Sprite(MainActivity.WIDTH * 0.5f, mNextQuestionTextureRegion.getHeight() * 0.5f, mNextQuestionTextureRegion, mResourceManager.getEngine().getVertexBufferObjectManager()){
 
 			@Override
-			public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
-					float pTouchAreaLocalX, float pTouchAreaLocalY) {
+			public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 				if(pSceneTouchEvent.isActionDown() && !mInputText.getText().equals(DEFAULT_INPUT_TEXT)){
 					if(!mQuitGame){
 						isAnswerCorrect();
@@ -246,7 +253,9 @@ public class QuizText extends BaseGame{
 	}
 	
 	private boolean isAnswerCorrect(){
-		if(this.mCurrentPage.getAnswer().equals(mAnswer)){
+		Log.v(MainActivity.TAG, "Real answer:" + mCurrentPage.getAnswer().toUpperCase());
+		Log.v(MainActivity.TAG, "User answer:" + mAnswer				 .toUpperCase());
+		if(this.mCurrentPage.getAnswer().toUpperCase().equals(mAnswer.toUpperCase())){
 			this.mCorrectQuestions++;
 			
 			this.mCorrectPopup.showPopup(true);
@@ -265,6 +274,8 @@ public class QuizText extends BaseGame{
 		if(mInputText != null)
 		mInputText.setText(DEFAULT_INPUT_TEXT);
 		
+		mAnswer = "";
+		
 		final int random = (int) (Math.random() * mPages.size());
 		
 		mCurrentPage = mPages.remove(random);
@@ -280,11 +291,11 @@ public class QuizText extends BaseGame{
 	 */
 	@Override
 	protected void endGame() {
-		this.mQuitGame = true;
+		this.mQuitGame = true; 
 		
 		final String correctCountString = mCorrectQuestions + "/" + mTotalQuestions;
 		
-		final Text correctCountText = new Text(mFinalPopup.getArrowSprite().getX(), mFinalPopup.getArrowSprite().getY() + mFinalPopup.getArrowSprite().getHeight() + ResourceManager.mLargeFont.getLineHeight(), ResourceManager.mLargeFont, correctCountString, mResourceManager.getEngine().getVertexBufferObjectManager()){
+		final Text correctCountText = new Text(mFinalPopup.getArrowSprite().getX(), mFinalPopup.getArrowSprite().getY() + mFinalPopup.getArrowSprite().getHeight() + ResourceManager.mLargeFont.getLineHeight() - 15, ResourceManager.mLargeFont, correctCountString, mResourceManager.getEngine().getVertexBufferObjectManager()){
 			@Override
 			protected void onManagedUpdate(float pSecondsElapsed) {
 				if(this.getAlpha() != this.getParent().getAlpha()){
@@ -293,6 +304,7 @@ public class QuizText extends BaseGame{
 				super.onManagedUpdate(pSecondsElapsed);
 			}
 		};
+ 		correctCountText.setColor(Color.BLACK);
 		mFinalPopup.attachChild(correctCountText);
 		
 		this.mFinalPopup.showPopup(true);
@@ -312,29 +324,50 @@ public class QuizText extends BaseGame{
 		pActivity.runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				AlertDialog.Builder alert = new AlertDialog.Builder(pActivity);
+				final AlertDialog.Builder alert = new AlertDialog.Builder(pActivity);
 		
-				alert.setTitle("Quiz");
-				alert.setMessage("Enter Answer");
+				alert.setTitle("Escribe la respuesta");
 		
 				// Set an EditText view to get user input 
-				final EditText input = new EditText(pActivity);
-				alert.setView(input);
+				mInput = new EditText(pActivity);
+				alert.setView(mInput);
+				mInput.setText(mAnswer);
+				mInput.setOnKeyListener(new OnKeyListener() {
+					
+					@Override
+					public boolean onKey(View v, int keyCode, KeyEvent event) {
+						if (event.getAction() == KeyEvent.ACTION_DOWN) {
+				              switch (keyCode) {
+				                  case KeyEvent.KEYCODE_DPAD_CENTER:
+				                  case KeyEvent.KEYCODE_ENTER:
+				                      Log.v("PFMaker","Hide keyboard");
+				                      finishedEditing();
+				                      return true;
+				              }
+				          }
+				          return false;
+					}
+				});
 		
 				alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface dialog, int whichButton) {
-					Editable value = input.getText();
-					if(value.toString().length() < DEFAULT_INPUT_TEXT.length()){
-						mAnswer = value.toString();
-						mInputText.setText(mAnswer);
-					}
+					finishedEditing();
 				  }
 				});
-				alert.show();
+				mAlertdialog = alert.show();
 			}
 		});
 	}
 
+	private void finishedEditing(){
+		Editable value = mInput.getText();
+		if(value.toString().length() < DEFAULT_INPUT_TEXT.length()){
+			mAnswer = value.toString();
+			mInputText.setText(mAnswer);
+		}
+		mAlertdialog.dismiss();
+	}
+	
 	@Override
 	protected void onStartGame() {
 		// TODO Auto-generated method stub

@@ -1,0 +1,29 @@
+<game>
+	<id val="14ECCAA2-B004-70A6-70E9-E3164202407A" />
+	<type type="differences" />
+	<avatar active="false" />
+	<desc text="Diferencias" />
+	<instruction>
+					<texts>
+						<text lang="1" text="Hello"/>
+						<text lang="2" text="Hola"/>
+						<text lang="7" text="Alo"/>
+					</texts>
+					<sounds>
+					</sounds>
+	</instruction>
+	<page>
+		<background src="none.png" scale="noscale" color="15658734" rgb="238-238-238" zoom="0.75"/>
+		<orientation value="vertical" />
+		<image id='original' src="d1.jpg"  color="15658734" rgb="238-238-238" zoom="0.73" />
+		<image id='differences' src="d2.jpg"  color="13421772" rgb="204-204-204" />
+		<item src="symbol.png" x="428" y="44" rotation="0" scale="1000">
+		</item>
+		<item src="symbol.png" x="446" y="254" rotation="0" scale="1000">
+		</item>
+		<item src="symbol.png" x="138" y="455" rotation="0" scale="1000">
+		</item>
+		<item src="symbol.png" x="45" y="723" rotation="0" scale="1000">
+		</item>
+	</page>
+</game>

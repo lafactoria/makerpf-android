@@ -29,6 +29,9 @@ import com.planetfactory.makerpf.Utils.XMLParser;
 
 public abstract class BaseGame extends BaseLayer implements IInstructionBoxListener{
 
+	//========================================================
+	// CONSTANTS
+	//========================================================
 	public static final String IMAGES_FOLDER = "images/";
 	public static final String SOUNDS_FOLDER = "sounds/";
 	public static final String ACTIONS_FOLDER = "actions/";
@@ -53,6 +56,7 @@ public abstract class BaseGame extends BaseLayer implements IInstructionBoxListe
 	public static final String T_SOUND	= "sound";
 	public static final String T_PAGE = "page";
 	public static final String T_BACKGROUND = "background";
+	public static final String T_FOREGROUND = "foreground";
 	public static final String T_IMAGE = "image";
 	public static final String T_INSTRUCTION = "instruction";
 	
@@ -64,6 +68,7 @@ public abstract class BaseGame extends BaseLayer implements IInstructionBoxListe
 	public static final String A_SRC = "src";
 	public static final String A_LANGUAGE = "lang";
 	public static final String A_TEXT = "text";
+	public static final String A_RGB = "rgb";
 	
 	// ===========================================================
 	// VARIABLES
@@ -105,9 +110,14 @@ public abstract class BaseGame extends BaseLayer implements IInstructionBoxListe
 	private int mCurrentID = 0;
 	
 	private int mBackgroundScale = 0;
+	
+	private int mColor;
 
 	protected abstract void onStartGame();
 	
+	//========================================================
+	// CONSTRUCTOR
+	//========================================================
 	public BaseGame(final ResourceManager pResourceManager){
 		super(pResourceManager);
 	}
@@ -144,10 +154,13 @@ public abstract class BaseGame extends BaseLayer implements IInstructionBoxListe
 		this.mCurrentID = pId;
 	}
 	
+	//========================================================
+	// ON LOAD RESOURCES
+	//========================================================
 	@Override
 	public void onLoadResources() {
-		mGameDocument = XMLParser.parseXMLFile(mResourceManager.getActivity(), mResourceManager.getAssetPath()  + XML_GAME);
-		mEndGameDocument = XMLParser.parseXMLFile(mResourceManager.getActivity(), mResourceManager.getAssetPath()  + XML_END_GAME);
+		mGameDocument = XMLParser.parseXMLFile(mResourceManager.getActivity(), ResourceManager.getAssetPath()  + XML_GAME);
+		mEndGameDocument = XMLParser.parseXMLFile(mResourceManager.getActivity(), ResourceManager.getAssetPath()  + XML_END_GAME);
 		
 		/*
 		 * Read XML Game Data
@@ -161,7 +174,7 @@ public abstract class BaseGame extends BaseLayer implements IInstructionBoxListe
 		Log.d(MainActivity.TAG, "Type = " + this.mType);
 		Log.d(MainActivity.TAG, "Description = " + this.mDescription);
 		Log.d(MainActivity.TAG, "Avatar = " + this.mAvatar +"");
-		
+		 
 		/*
 		 * Create Background Texture
 		 */	
@@ -171,19 +184,36 @@ public abstract class BaseGame extends BaseLayer implements IInstructionBoxListe
 		Element e2 = (Element) list2.item(0);	
 		
 		String suffix = "";
-		
-		if(!e2.getAttribute(A_SRC).endsWith("png") && !e2.getAttribute(A_SRC).endsWith("jpg")){
-			suffix = "_" + ResourceManager.getLanguage() + ".jpg";
-		}
-		
-		if(e2.getAttribute(BaseItem.A_SCALE) != null && !e2.getAttribute(BaseItem.A_SCALE).equals("noscale")){
-			this.mBackgroundScale = Integer.valueOf(e2.getAttribute(BaseItem.A_SCALE));
-		}
+		String texturePath;
+		 
+		if(e2 != null){
+			if(!e2.getAttribute(A_SRC).endsWith("png") && !e2.getAttribute(A_SRC).endsWith("jpg")){
+				suffix = "_" + ResourceManager.getLanguage() + ".jpg";
+			}
 			
-		String texturePath = mResourceManager.getAssetPath() + IMAGES_FOLDER + e2.getAttribute(A_SRC) + suffix;
+			if(e2.getAttribute(BaseItem.A_SCALE) != null && !e2.getAttribute(BaseItem.A_SCALE).equals("noscale")){
+				this.mBackgroundScale = Integer.valueOf(e2.getAttribute(BaseItem.A_SCALE));
+			}
+			
+			if(e2.getAttribute(A_RGB) != null && !e2.getAttribute(A_RGB).equals("")){
 				
-		this.mTextures.add(mResourceManager.createSizedTexture(texturePath));
-		mBackgroundTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mTextures.get(mTextures.size() - 1), mResourceManager.getActivity(), texturePath, 0, 0);	
+				String colors[] = e2.getAttribute(A_RGB).split("-");
+				
+				final float r = Integer.valueOf(colors[2]);
+				final float g = Integer.valueOf(colors[1]);
+				final float b = Integer.valueOf(colors[0]);
+				
+				this.mColor = org.andengine.util.adt.color.ColorUtils.convertRGBAToABGRPackedInt(r / 255, g / 255, b / 255, 1);
+			} else {
+				this.mColor = -1;
+			}
+			
+				
+			texturePath = ResourceManager.getAssetPath() + IMAGES_FOLDER + e2.getAttribute(A_SRC) + suffix;
+			
+			this.mTextures.add(mResourceManager.createSizedTexture(texturePath));
+			mBackgroundTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mTextures.get(mTextures.size() - 1), mResourceManager.getActivity(), texturePath, 0, 0);
+		}
 		
 		/*
 		 * Create End Game Texture
@@ -191,7 +221,7 @@ public abstract class BaseGame extends BaseLayer implements IInstructionBoxListe
 		if(mEndGameDocument != null){
 			list = XMLParser.parseDocument(T_IMAGE, mEndGameDocument);
 			e = (Element) list.item(0);
-			texturePath = mResourceManager.getAssetPath() + IMAGES_FOLDER + e.getAttribute(A_SRC);
+			texturePath = ResourceManager.getAssetPath() + IMAGES_FOLDER + e.getAttribute(A_SRC);
 
 			this.mTextures.add(mResourceManager.createSizedTexture(texturePath));
 			mEndGameTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mTextures.get(mTextures.size() - 1), mResourceManager.getActivity(), texturePath, 0, 0);
@@ -286,6 +316,9 @@ public abstract class BaseGame extends BaseLayer implements IInstructionBoxListe
 		}
 	}
 	
+	//========================================================
+	// ON UNLOAD RESOURCES
+	//========================================================
 	@Override
 	public void onUnloadResources() {
 		if(mInstructionBox != null){
@@ -293,16 +326,27 @@ public abstract class BaseGame extends BaseLayer implements IInstructionBoxListe
 		}
 	}
 
+	//========================================================
+	// ON POPULATE
+	//========================================================
 	@Override
 	public void onPopulate() {
 		mIsGameOver = false;
 
 		mPositionId = mCurrentID;
-		
-		this.mBackgroundSprite = new MPFSprite(MainActivity.WIDTH * 0.5f, MainActivity.HEIGHT * 0.5f, MainActivity.WIDTH, MainActivity.HEIGHT, mBackgroundTextureRegion, mResourceManager.getEngine().getVertexBufferObjectManager());
-		if(mBackgroundScale != 0)
-		this.mBackgroundSprite.setScale(mBackgroundScale);
-		this.attachChild(this.mBackgroundSprite);
+
+		if(mBackgroundTextureRegion != null){
+			this.mBackgroundSprite = new MPFSprite(MainActivity.WIDTH * 0.5f, MainActivity.HEIGHT * 0.5f, MainActivity.WIDTH, MainActivity.HEIGHT, mBackgroundTextureRegion, mResourceManager.getEngine().getVertexBufferObjectManager());
+			
+			if(mBackgroundScale != 0)
+				this.mBackgroundSprite.setScale(mBackgroundScale);
+				
+				if(this.mColor != -1)
+				this.mBackgroundSprite.setColor(this.mColor);
+				this.attachChild(this.mBackgroundSprite);
+		}
+				
+
 		
 		this.mBackButtonSprite = new MPFSprite(mBackButtonTextureRegion.getWidth() * 0.5f + 5, mBackButtonTextureRegion.getHeight() * 0.5f + 5, mBackButtonTextureRegion, mResourceManager.getEngine().getVertexBufferObjectManager()){
 
@@ -321,7 +365,6 @@ public abstract class BaseGame extends BaseLayer implements IInstructionBoxListe
 		};
 		this.mBackButtonSprite.setVisible(false);
 		this.attachChild(this.mBackButtonSprite);
-		
 		
 		if(MainActivity.mIsMenuActive){
 			
@@ -371,10 +414,15 @@ public abstract class BaseGame extends BaseLayer implements IInstructionBoxListe
 			this.mEndGameSprite = new MPFSprite(MainActivity.WIDTH * 0.5f, MainActivity.HEIGHT * 0.5f, MainActivity.WIDTH, MainActivity.HEIGHT, mEndGameTextureRegion, mResourceManager.getEngine().getVertexBufferObjectManager()){
 
 				@Override
-				public boolean onAreaTouched(TouchEvent pSceneTouchEvent,
-						float pTouchAreaLocalX, float pTouchAreaLocalY) {
+				public boolean onAreaTouched(TouchEvent pSceneTouchEvent, float pTouchAreaLocalX, float pTouchAreaLocalY) {
 					if(pSceneTouchEvent.isActionDown() && mIsGameOver){
-						loadNextGame();
+						if(MainActivity.mIsMenuActive){
+							BaseGame.this.unloadResources();
+		                    GameSelector.loadGame(GameSelector.MENU_ID);
+						}
+						else{
+							loadNextGame();
+						}
 						return true;
 					}
 					
@@ -388,6 +436,9 @@ public abstract class BaseGame extends BaseLayer implements IInstructionBoxListe
 		}
 	}
 	
+	//========================================================
+	// ON POPULATE FINAL
+	//========================================================
 	protected void onPopulateFinal(){
 		if(mInstructionBox != null){
 			mInstructionBox.createResources();
@@ -402,11 +453,13 @@ public abstract class BaseGame extends BaseLayer implements IInstructionBoxListe
 				}
 				
 			}));
-		}
-		
+		}		
 		this.sortChildren();
 	}
 	
+	//========================================================
+	// END GAME
+	//========================================================
 	protected void endGame(){
 		
 		this.mIsGameOver = true;
@@ -419,63 +472,62 @@ public abstract class BaseGame extends BaseLayer implements IInstructionBoxListe
 			this.mEndGameSprite.registerEntityModifier(new SequenceEntityModifier(new DelayModifier(1.2f), new AlphaModifier(1, 0, 1), new DelayModifier(2), new AlphaModifier(1, 1, 0, new IEntityModifier.IEntityModifierListener(){
 
 				@Override
-				public void onModifierStarted(IModifier<IEntity> pModifier,
-						IEntity pItem) {
+				public void onModifierStarted(IModifier<IEntity> pModifier,	IEntity pItem) {
 				}
 
 				@Override
-				public void onModifierFinished(IModifier<IEntity> pModifier,
-						IEntity pItem) {
+				public void onModifierFinished(IModifier<IEntity> pModifier,IEntity pItem) {
 	                    BaseGame.this.unloadResources();
 	                    GameSelector.loadGame(GameSelector.MENU_ID);
-				}
-				
+				}				
 			})));
 		} else {
 			this.mEndGameSprite.registerEntityModifier(new SequenceEntityModifier(new DelayModifier(1.2f), new AlphaModifier(1, 0, 1)));
-		}
-		
+		}		
 		mResourceManager.getSoundManager().playFX(SoundManager.OK);
 	}
 
+	//========================================================
+	// ON INSTRUCTION DISMISSED
+	//========================================================
 	@Override
 	public void onInstructionsDismissed() {
 		onStartGame();
 	}
 	
+	//========================================================
+	// LOAD NEXT GAME
+	//========================================================
 	public void loadNextGame(){
 		MainActivity.mLoadingSprite.setVisible(true);
 		
-		if(mCurrentID == MainActivity.mGames.size() - 1){
+		if(mCurrentID == MainActivity.mGames.size() ){
 			mPositionId = 1;
 		} else {
 			mPositionId = mCurrentID + 1;
 		}
 		
-		Log.d(MainActivity.TAG, "Game # " + mPositionId + " out of " + (MainActivity.mGames.size()));
-		
-		mResourceManager.getEngine().registerUpdateHandler(new TimerHandler(0.1f, new ITimerCallback(){
-
-			@Override
-			public void onTimePassed(TimerHandler pTimerHandler) {
-				unloadResources();
-				GameSelector.loadGame(mPositionId);
-			}
-			
-		}));
-
-		mResourceManager.getScene().sortChildren();
+		loadGame(mPositionId);
 	}
 	
+	//========================================================
+	// LOAD PREVIOUS GAME
+	//========================================================
 	public void loadPreviousGame(){
-		MainActivity.mLoadingSprite.setVisible(true);;
+		MainActivity.mLoadingSprite.setVisible(true);
 
 		if(mCurrentID == 1){
-			mPositionId = MainActivity.mGames.size() - 1;
+			mPositionId = MainActivity.mGames.size();
 		} else {
 			mPositionId = mCurrentID - 1;
 		}
-		
+		loadGame(mPositionId);
+	}
+	
+	//========================================================
+	// LOAD GAME
+	//========================================================
+	public void loadGame(final int positionId){
 		Log.d(MainActivity.TAG, "Game # " + mPositionId + " out of " + (MainActivity.mGames.size()));
 
 		mResourceManager.getEngine().registerUpdateHandler(new TimerHandler(0.1f, new ITimerCallback(){
@@ -485,10 +537,8 @@ public abstract class BaseGame extends BaseLayer implements IInstructionBoxListe
 				unloadResources();
 				GameSelector.loadGame(mPositionId);
 			}
-			
 		}));
-
 		mResourceManager.getScene().sortChildren();
+		
 	}
-	
 }

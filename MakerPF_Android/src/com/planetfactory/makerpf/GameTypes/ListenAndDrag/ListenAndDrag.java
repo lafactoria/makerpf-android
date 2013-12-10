@@ -3,6 +3,7 @@ package com.planetfactory.makerpf.GameTypes.ListenAndDrag;
 import java.util.ArrayList;
 
 import org.andengine.entity.modifier.ScaleModifier;
+import org.andengine.entity.text.Text;
 import org.andengine.input.touch.TouchEvent;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
 import org.andengine.opengl.texture.region.ITextureRegion;
@@ -114,6 +115,13 @@ public class ListenAndDrag extends BaseGame{
 			};
 			mResourceManager.getScene().registerTouchArea(sprite);
 			this.attachChild(sprite);
+			
+			if(item.getKind() > 1){
+				final Text text = new Text(sprite.getWidth() * 0.5f, sprite.getHeight() * 0.5f, mResourceManager.mFont, item.getText(), mResourceManager.getEngine().getVertexBufferObjectManager());
+				text.setColor(item.getColor());
+				sprite.attachChild(text);
+				sprite.setAlpha(0);
+			}
 			
 			mItemsToGuess.add(sprite);
 		}

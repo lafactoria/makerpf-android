@@ -27,6 +27,9 @@ import com.planetfactory.makerpf.Utils.XMLParser;
 
 public class PaintCanvas extends Activity {
 
+	//===================================================================
+	// CONSTANTS
+	//===================================================================
 	/** Colors to cycle through. */
 	static final int[] COLORS = new int[] { Color.WHITE, Color.RED,
 			Color.YELLOW, Color.GREEN, Color.CYAN, Color.BLUE, Color.MAGENTA, };
@@ -34,9 +37,12 @@ public class PaintCanvas extends Activity {
 	/** Background color. */
 	static final int BACKGROUND_COLOR = Color.TRANSPARENT;
 
+	//===================================================================
+	// VARIABLES
+	//===================================================================
 	/** The view responsible for drawing the window. */	
 	private PaintView mPaintView;
-	
+	 
 	private ImageView mBackgroundImageView;
 	private ImageView mForegroundImageView;
 	
@@ -61,6 +67,9 @@ public class PaintCanvas extends Activity {
 	/** The index of the current color to use. */
 	int mColorIndex;
 
+	//===================================================================
+	// ON CREATE
+	//===================================================================
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -72,18 +81,35 @@ public class PaintCanvas extends Activity {
 		
 		mPaintView = (PaintView) findViewById(R.id.paint_view);
 		mPaintView.setBackgroundColor(BACKGROUND_COLOR);
+		
+		mInstructionBackgroundLayout 	= (RelativeLayout) findViewById(R.id.instruction_backdrop);
+		mInstructionPopupLayout 		= (RelativeLayout) findViewById(R.id.bg_popup);
+		
+		mInstructionPopupLayout.setVisibility(View.GONE);
+		mInstructionBackgroundLayout.setVisibility(View.GONE);
+		
+		
+		//Temp
+		mCameraButton = (ImageView) findViewById(R.id.camera_button);
+		mCameraButton.setVisibility(View.INVISIBLE);
 	}
 
+	//===================================================================
+	// CREATE BACKGROUND
+	//===================================================================
 	/**
 	 * Pull the background image from the paint gametype's folder and 
 	 * apply it to the application in the form of an ImageView.
 	 */
 	private void createBackground(){
 		mBackgroundImageView = (ImageView) findViewById(R.id.background_image);
+		
+		NodeList list = XMLParser.parseDocument(BaseGame.T_BACKGROUND, ResourceManager.mPaintDocument);
+		Element element = (Element) list.item(0);		
 
 		InputStream is = null;
 		try {
-			is = getAssets().open(ResourceManager.getAssetPath() + "images/background_paint.jpg");
+			is = getAssets().open(ResourceManager.getAssetPath() + "images/" + element.getAttribute(BaseGame.A_SRC));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -94,16 +120,22 @@ public class PaintCanvas extends Activity {
 		}
 	}
 	
+	//===================================================================
+	// CREATE FOREGROUND
+	//===================================================================
 	/**
 	 * Pull the foreground image from the paint gametype's folder and 
 	 * apply it to the application in the form of an ImageView.
 	 */
 	private void createForeground(){
 		mForegroundImageView = (ImageView) findViewById(R.id.foreground_image);
+		
+		NodeList list = XMLParser.parseDocument(BaseGame.T_FOREGROUND, ResourceManager.mPaintDocument);
+		Element element = (Element) list.item(0);		
 
 		InputStream is = null;
 		try {
-			is = getAssets().open(ResourceManager.getAssetPath() + "images/paint_messi.png");
+			is = getAssets().open(ResourceManager.getAssetPath() + "images/" + element.getAttribute(BaseGame.A_SRC));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -114,6 +146,9 @@ public class PaintCanvas extends Activity {
 		}
 	}
 	
+	//===================================================================
+	// CREATE HUD
+	//===================================================================
 	/**
 	 * Create the main HUD items, including the camera button, garbage (erase)
 	 * button, menu/home button, and the left & bottom size and color bars.
@@ -182,6 +217,9 @@ public class PaintCanvas extends Activity {
 		mBrushColorFrame = (LinearLayout) findViewById(R.id.brush_color_layout);
 	}
 	
+	//===================================================================
+	// ADD COLOR PALETTE
+	//===================================================================
 	/**
 	 * Load all of the color PNG's in from the 'assets/images/colors' folder,
 	 * adding a View to the bottom color palette for each file found in the folder.
@@ -266,12 +304,15 @@ public class PaintCanvas extends Activity {
 		}
 	}
 	
+	//===================================================================
+	// ADD SIZE SELECTION
+	//===================================================================
 	/**
 	 * Load the paint size selection images into the application as ImageViews. 
 	 */
 	private void addSizeSelection(){
 		
-		mSizeBigView = (ImageView)findViewById(R.id.size_big_view);
+		mSizeBigView = (ImageView)findViewById(R.id.size_big_view); 
 		mSizeBigView.setClickable(true);
 		mSizeBigView.setOnClickListener(new OnClickListener(){
 
@@ -398,121 +439,130 @@ public class PaintCanvas extends Activity {
 		mSizeSelectedView.setLayoutParams(lp);
 	}
 	
+	//===================================================================
+	// CREATE INSTRUCTION BOX
+	//===================================================================
 	private void createInstructionBox(){
 		
-		mInstructionPopupLayout = (RelativeLayout) findViewById(R.id.bg_popup);
-
-		/*
-		 * Setup the instruction backdrop (black background 0.5 alpha)
-		 */
-		mInstructionBackgroundLayout = (RelativeLayout) findViewById(R.id.instruction_backdrop);
-		mInstructionBackgroundLayout.setClickable(true);
-		mInstructionBackgroundLayout.getBackground().setAlpha((int) (255 * 0.5f));
+		NodeList list 	= XMLParser.parseDocument(BaseGame.T_INSTRUCTION, ResourceManager.mPaintDocument);
+		Element e 		= (Element) list.item(0);
 		
-		final Animation backgroundFade = new AlphaAnimation(0.5f, 0);
-		backgroundFade.setDuration(1000);
-		
-		final AnimationListener animationListener = new AnimationListener(){
-
-			@Override
-			public void onAnimationEnd(Animation animation) {
-				mInstructionPopupLayout.setVisibility(View.GONE);
-				mInstructionBackgroundLayout.setVisibility(View.GONE);
-			}
-
-			@Override
-			public void onAnimationRepeat(Animation animation) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void onAnimationStart(Animation animation) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-		};
-		
-		backgroundFade.setAnimationListener(animationListener);
-		
-		/*
-		 * Setup the instruction arrow button to close the box via alpha fade
-		 */
-		mInstructionArrowImageView = (ImageView) findViewById(R.id.instruction_arrow);
-		mInstructionArrowImageView.setClickable(true);
-		mInstructionArrowImageView.setOnClickListener(new OnClickListener(){
-			@Override
-			public void onClick(View v) {
-				mInstructionBackgroundLayout.setAnimation(backgroundFade);
-				
-				v.invalidate();
-			}
-		});
-		
-		/*
-		 * Create Instruction text
-		 */
-		NodeList list = XMLParser.parseDocument(BaseGame.T_INSTRUCTION, ResourceManager.mPaintDocument);
-		Element e = (Element) list.item(0);
-		
-		list = e.getElementsByTagName(BaseGame.T_TEXTS);
-		
-		String text = "";
-		
-		if(list != null && list.getLength() > 0){
-			
-			e = (Element) list.item(0);
-			list = e.getElementsByTagName(BaseGame.T_TEXT);
-			
-			for(int i = 0; i < list.getLength(); i++){
-				final Element textElement = (Element) list.item(i);
-				
-				if(Integer.valueOf(textElement.getAttribute(BaseGame.A_LANGUAGE)) == ResourceManager.getLanguage()){
-					text = textElement.getAttribute(BaseGame.A_TEXT);
-				} 
-			}
-			
-			list = null;
+		if(e == null){
+			mInstructionPopupLayout.setVisibility(View.GONE);
+			mInstructionBackgroundLayout.setVisibility(View.GONE);
 		}
-		
-		mInstructionTextView = (TextView) findViewById(R.id.text_view);
-		mInstructionTextView.setText(text);
-		
-		/*
-		 * Create instruction image
-		 */
-		final ImageView instructionImage = (ImageView) findViewById(R.id.avatar);
-		
-		list = XMLParser.parseDocument(BaseGame.T_INSTRUCTION, ResourceManager.mPaintDocument);
-		e = (Element) list.item(0);
-		
-		list = e.getElementsByTagName(BaseGame.T_IMAGE);
-		
-		if(list != null && list.getLength() > 0){
-			
-			e = (Element) list.item(0);
-			final String texturePath = e.getAttribute(BaseGame.A_SRC);
-			
-			InputStream is = null;
-			try {
-				is = getAssets().open(ResourceManager.getAssetPath() + "images/" + texturePath);
-			} catch (IOException err) {
-				err.printStackTrace();
+		else{
+			/*
+			 * Setup the instruction backdrop (black background 0.5 alpha)
+			 */
+			mInstructionPopupLayout.setVisibility(View.VISIBLE);
+			mInstructionBackgroundLayout.setVisibility(View.VISIBLE);
+			mInstructionBackgroundLayout.setClickable(true);
+			mInstructionBackgroundLayout.getBackground().setAlpha((int) (255 * 0.5f));
+
+			final Animation backgroundFade = new AlphaAnimation(0.5f, 0);
+			backgroundFade.setDuration(1000);
+
+			final AnimationListener animationListener = new AnimationListener(){
+
+				@Override
+				public void onAnimationEnd(Animation animation) {
+					mInstructionPopupLayout.setVisibility(View.GONE);
+					mInstructionBackgroundLayout.setVisibility(View.GONE);
+				}
+
+				@Override
+				public void onAnimationRepeat(Animation animation) {
+					// TODO Auto-generated method stub
+
+				}
+
+				@Override
+				public void onAnimationStart(Animation animation) {
+					// TODO Auto-generated method stub
+				}
+			};
+
+			backgroundFade.setAnimationListener(animationListener);
+
+			/*
+			 * Setup the instruction arrow button to close the box via alpha fade
+			 */
+			mInstructionArrowImageView = (ImageView) findViewById(R.id.instruction_arrow);
+			mInstructionArrowImageView.setClickable(true);
+			mInstructionArrowImageView.setOnClickListener(new OnClickListener(){
+				@Override
+				public void onClick(View v) {
+					mInstructionBackgroundLayout.setAnimation(backgroundFade);
+
+					v.invalidate();
+				}
+			});
+
+			/*
+			 * Create Instruction text
+			 */
+			list = e.getElementsByTagName(BaseGame.T_TEXTS);
+
+			String text = "";
+
+			if(list != null && list.getLength() > 0){
+
+				e = (Element) list.item(0);
+				list = e.getElementsByTagName(BaseGame.T_TEXT);
+
+				for(int i = 0; i < list.getLength(); i++){
+					final Element textElement = (Element) list.item(i);
+
+					if(Integer.valueOf(textElement.getAttribute(BaseGame.A_LANGUAGE)) == ResourceManager.getLanguage()){
+						text = textElement.getAttribute(BaseGame.A_TEXT);
+					} 
+				}
+
+				list = null;
 			}
 
-			if (is != null) {
-				Drawable d = Drawable.createFromStream(is, null);
-				instructionImage.setImageDrawable(d);
+			mInstructionTextView = (TextView) findViewById(R.id.text_view);
+			mInstructionTextView.setText(text);
+
+
+			/*
+			 * Create instruction image
+			 */
+			final ImageView instructionImage = (ImageView) findViewById(R.id.avatar);
+
+			list = XMLParser.parseDocument(BaseGame.T_INSTRUCTION, ResourceManager.mPaintDocument);
+			e = (Element) list.item(0);
+
+			list = e.getElementsByTagName(BaseGame.T_IMAGE);
+
+			if(list != null && list.getLength() > 0){
+
+				e = (Element) list.item(0);
+				final String texturePath = e.getAttribute(BaseGame.A_SRC);
+
+				InputStream is = null;
+				try {
+					is = getAssets().open(ResourceManager.getAssetPath() + "images/" + texturePath);
+				} catch (IOException err) {
+					err.printStackTrace();
+				}
+
+				if (is != null) {
+					Drawable d = Drawable.createFromStream(is, null);
+					instructionImage.setImageDrawable(d);
+				}
+
+				list = null;
 			}
-			
-			list = null;
 		}
-		
 		
 		//mInstructionImageView;
 	}
 	
+	//===================================================================
+	// HIDE HUD
+	//===================================================================
 	private void hideHUD(){
 		mBrushSizeFrame.setVisibility(View.INVISIBLE);
 		mBrushColorFrame.setVisibility(View.INVISIBLE);
@@ -521,20 +571,30 @@ public class PaintCanvas extends Activity {
 		mCameraButton.setVisibility(View.INVISIBLE);
 	}
 	
+	//===================================================================
+	// SHOW HUD
+	//===================================================================
 	private void showHUD(){
 		mBrushSizeFrame.setVisibility(View.VISIBLE);
 		mBrushColorFrame.setVisibility(View.VISIBLE);
 		mGarbageButton.setVisibility(View.VISIBLE);
 		mHomeButton.setVisibility(View.VISIBLE);
-		mCameraButton.setVisibility(View.VISIBLE);
+		//mCameraButton.setVisibility(View.VISIBLE);
+		mCameraButton.setVisibility(View.INVISIBLE);
 	}
 
+	//===================================================================
+	// ON BACK PRESSED
+	//===================================================================
 	@Override
 	public void onBackPressed() {
 		this.finish();
 		super.onBackPressed();
 	}
 
+	//===================================================================
+	// ON WINDOW FOCUS CHANGED
+	//===================================================================
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
 		createBackground();

@@ -2,6 +2,7 @@ package com.planetfactory.makerpf.Layers.Main;
 
 import org.andengine.entity.sprite.Sprite;
 import org.andengine.input.touch.TouchEvent;
+import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlas;
 import org.andengine.opengl.texture.atlas.bitmap.BitmapTextureAtlasTextureRegionFactory;
 import org.andengine.opengl.texture.region.ITextureRegion;
 import org.w3c.dom.Document;
@@ -51,8 +52,11 @@ public class Main extends BaseLayer{
 		
 		String texturePath = "images/" + ((Element)mDocument.getElementsByTagName(BaseGame.T_BACKGROUND).item(0)).getAttribute(BaseGame.A_SRC);
 		
-		this.mTextures.add(mResourceManager.createSizedTexture(texturePath));
-		mBackgroundTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mTextures.get(mTextures.size() - 1), mResourceManager.getActivity(), texturePath, 0, 0);
+		BitmapTextureAtlas bta = mResourceManager.createSizedTexture(texturePath);
+		if(bta != null){
+			this.mTextures.add(mResourceManager.createSizedTexture(texturePath));
+			mBackgroundTextureRegion = BitmapTextureAtlasTextureRegionFactory.createFromAsset(this.mTextures.get(mTextures.size() - 1), mResourceManager.getActivity(), texturePath, 0, 0);
+		}
 	
 		
 		texturePath = "images/" + ((Element)mDocument.getElementsByTagName(T_PLAY).item(0)).getAttribute(BaseGame.A_SRC);
@@ -71,7 +75,6 @@ public class Main extends BaseLayer{
 			mIsMenuActive = Boolean.valueOf(menuElement.getAttribute(A_ACTIVE));
 			MainActivity.mIsMenuActive = mIsMenuActive;
 		}
-
 	}
 
 	@Override
@@ -83,8 +86,10 @@ public class Main extends BaseLayer{
 		
 		if(mIsCoverActive){
 		
-			this.mBackgroundSprite = new MPFSprite(MainActivity.WIDTH * 0.5f, MainActivity.HEIGHT * 0.5f, MainActivity.WIDTH, MainActivity.HEIGHT, mBackgroundTextureRegion, mResourceManager.getEngine().getVertexBufferObjectManager());
-			this.attachChild(this.mBackgroundSprite);
+			if(mBackgroundTextureRegion!= null){
+				this.mBackgroundSprite = new MPFSprite(MainActivity.WIDTH * 0.5f, MainActivity.HEIGHT * 0.5f, MainActivity.WIDTH, MainActivity.HEIGHT, mBackgroundTextureRegion, mResourceManager.getEngine().getVertexBufferObjectManager());
+				this.attachChild(this.mBackgroundSprite);
+			}
 
 			final float x = Float.valueOf(((Element)mDocument.getElementsByTagName(T_PLAY).item(0)).getAttribute(Item.A_X));
 			final float y = Float.valueOf(((Element)mDocument.getElementsByTagName(T_PLAY).item(0)).getAttribute(Item.A_Y));
@@ -101,11 +106,10 @@ public class Main extends BaseLayer{
 						GameSelector.loadGame(GameSelector.MENU_ID);
 						return true;
 					}
-
 					return false;
 				}
-
 			};
+			this.mPlaySprite.setPosition(mPlaySprite.getX() + MainActivity.MARGIN_X, mPlaySprite.getY());
 			mResourceManager.getScene().registerTouchArea(this.mPlaySprite);
 			this.attachChild(this.mPlaySprite);
 		} else {

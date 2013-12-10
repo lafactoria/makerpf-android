@@ -1,0 +1,399 @@
+<game>
+	<id val="DC340B06-1062-7717-0BF0-F120FA35DF51" />
+	<type type="quiz" />
+	<avatar active="false" />
+	<desc text="Cuestionario Geografia" />
+	<page>
+		<background src="FONDO-01.png" scale="noscale" color="15658734" rgb="238-238-238" zoom="0.75"/>
+		<parent id="1" x="512" y="384" scale="1000" rotation="0" src="geografia-01.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cuál es la capital de Brasil? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="1" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Rio de Janeiro"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="1" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="San Paulo"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="1" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Brasilia"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="4" parent="1" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Panamá"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="2" x="512" y="384" scale="1000" rotation="0" src="geografia-02.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Dónde se encuentra el Big Ben? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="2" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Londres"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="2" parent="2" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Liverpol"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="2" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Berin"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="2" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Dublin"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="3" x="512" y="384" scale="1000" rotation="0" src="geografia-03.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿En que país se encuentra la ciudad de Berlín? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="3" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Bélgica"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="3" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Alemania"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="3" parent="3" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Holanda"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="3" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Portugal"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="4" x="512" y="384" scale="1000" rotation="0" src="geografia-04.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Dónde está la autentica Torre Eiffel? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="4" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Paris"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="2" parent="4" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Londres"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="4" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Barcelona"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="4" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Madrid"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="5" x="512" y="384" scale="1000" rotation="0" src="geografia-05.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cuál es la ciudad de las góndolas? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="5" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Florencia"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="5" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Amsterdam"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="5" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Brujas"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="5" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Venecia"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+		</parent>
+		<parent id="6" x="512" y="384" scale="1000" rotation="0" src="geografia-06.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cuál es la capital de Portugal? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="6" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Lisboa"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="2" parent="6" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Oporto"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="6" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Braga"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="6" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Coimbra"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="7" x="512" y="384" scale="1000" rotation="0" src="geografia-07.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cuál es el rio mas largo de España? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="7" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="El Tajo"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="2" parent="7" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="El Duero"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="7" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="El Guadiana"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="7" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="El Guadalquivir"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="8" x="512" y="384" scale="1000" rotation="0" src="geografia-08.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cuál es la montaña mas alta del mundo? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="8" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="El Montblanc"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="8" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="El  Annapurna"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="8" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="El K2"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="8" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="El Everest"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+		</parent>
+		<parent id="9" x="512" y="384" scale="1000" rotation="0" src="geografia-09.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cuál es el rio mas grande de África? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="9" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Nilo"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="2" parent="9" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Niger"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="3" parent="9" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Obi"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="9" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Tobol"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+		<parent id="10" x="512" y="384" scale="1000" rotation="0" src="geografia-10.png" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="¿Cuál es la capital de Turquia? "/>
+			</texts>
+			<sounds>
+			</sounds>
+			<item id="1" parent="10" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Istambul"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="2" parent="10" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Ankara"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>true</isCorrect>
+			</item>
+			<item id="3" parent="10" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Bursa"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+			<item id="4" parent="10" x="0" y="0" scale="1000" rotation="0" src="" textColor="0" rgb="0-0-0" kind="0">
+			<texts>
+				<text lang="2" text="Esmirna"/>
+			</texts>
+				<sounds>
+				</sounds>
+				<isCorrect>false</isCorrect>
+			</item>
+		</parent>
+	</page>
+</game>

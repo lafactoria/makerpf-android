@@ -2,9 +2,10 @@ package com.planetfactory.makerpf.GameTypes.QuizText;
 
 import org.andengine.entity.Entity;
 import org.andengine.entity.sprite.Sprite;
+import org.andengine.entity.text.AutoWrap;
 import org.andengine.entity.text.Text;
-
-import android.util.Log;
+import org.andengine.entity.text.TextOptions;
+import org.andengine.util.adt.align.HorizontalAlign;
 
 import com.planetfactory.makerpf.MainActivity;
 import com.planetfactory.makerpf.GameTypes.Parent;
@@ -37,28 +38,38 @@ public class QuizTextPage extends Entity{
 	}
 	
 	public void initialize(){
-		
-		mPageImage = new Sprite(65, 480, mParent.getTextureRegion(), mResourceManager.getEngine().getVertexBufferObjectManager());
-		
-		if(mPageImage.getHeight() > mPageImage.getWidth()){
-			if(mPageImage.getHeight() > 200){
-				mPageImage.setScale(200 / mPageImage.getHeight());
+
+		if(mParent.getTextureRegion()!=null){
+			mPageImage = new Sprite(65, 480, mParent.getTextureRegion(), mResourceManager.getEngine().getVertexBufferObjectManager());
+
+			if(mPageImage.getHeight() > mPageImage.getWidth()){
+				if(mPageImage.getHeight() > 200){
+					mPageImage.setScale(200 / mPageImage.getHeight());
+				}
+			} else {
+				if(mPageImage.getWidth() > 400){
+					mPageImage.setScale(400 / mPageImage.getWidth());
+				}
 			}
-		} else {
-			if(mPageImage.getWidth() > 400){
-				mPageImage.setScale(400 / mPageImage.getWidth());
-			}
+
+			mPageImage.setX(mPageImage.getWidth() * mPageImage.getScaleX() * 0.5f + 20);
+			mPageImage.setY(mPageImage.getY() + 20);
+			this.attachChild(mPageImage);
 		}
-		mPageImage.setX(mPageImage.getWidth() * mPageImage.getScaleX() * 0.5f + 20);
-		mPageImage.setY(mPageImage.getY() + 20);
-		this.attachChild(mPageImage);
-		
-		mPageText = new Text(0, 0, ResourceManager.mFont, mParent.getText(ResourceManager.getLanguage()), mResourceManager.getEngine().getVertexBufferObjectManager());
+
+		TextOptions to = new TextOptions(HorizontalAlign.LEFT);
+		to.setAutoWrap(AutoWrap.WORDS);
+		to.setAutoWrapWidth(700);
+
+		mPageText = new Text(0, 0, ResourceManager.mFont, mParent.getText(),to, mResourceManager.getEngine().getVertexBufferObjectManager());
 		mPageText.setScale(1.3f);
 		mPageText.setColor(0, 0, 0);
-		mPageText.setPosition(mPageImage.getX() + mPageImage.getWidth() * mPageImage.getScaleX() * 0.5f + mPageText.getWidth(), mPageImage.getY() + mPageImage.getHeight() * mPageImage.getScaleX() * 0.5f - mPageText.getHeight());
+		if(mPageImage!=null){
+			mPageText.setPosition(mPageImage.getX() + mPageImage.getWidth() * mPageImage.getScaleX() * 0.5f + mPageText.getWidth(), mPageImage.getY() + mPageImage.getHeight() * mPageImage.getScaleX() * 0.5f - mPageText.getHeight());
+		}
+		else{
+			mPageText.setPosition(150 + MainActivity.MARGIN_X + mPageText.getWidth()*0.5f, MainActivity.HEIGHT - 95);
+		}
 		this.attachChild(mPageText);
-		
-	}
-	
+	}	
 }
