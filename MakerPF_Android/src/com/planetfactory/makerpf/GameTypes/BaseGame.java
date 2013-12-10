@@ -503,10 +503,10 @@ public abstract class BaseGame extends BaseLayer implements IInstructionBoxListe
 		
 		if(mCurrentID == MainActivity.mGames.size() ){
 			mPositionId = 1;
-		} else {
+		} else { 
 			mPositionId = mCurrentID + 1;
 		}
-		
+		 
 		loadGame(mPositionId);
 	}
 	
