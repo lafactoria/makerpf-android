@@ -45,7 +45,7 @@ We recomend following this guide: <https://crosswalk-project.org/#documentation/
 - Using Crosswalk,you can lock the device's orientation with the following command when building the app: ```--orientation=landscape```
     
     Example:
-    -```
+    ```
     python make_apk.py --manifest=xwalk-appname/manifest.json --orientation=landscape
     ```
 
