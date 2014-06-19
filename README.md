@@ -10,8 +10,8 @@ MakerPF projects can be exported to Android using an HTML5 web runtime or by usi
 
 ### Prerequisites
 - Download and install Intel XDK
-- <https://github.com/s6joui/makerpf-android/raw/master/Downloads/xdk_web_win_master_0876.exe>
-- <http://xdk-software.intel.com/>
+    - <https://github.com/s6joui/makerpf-android/raw/master/Downloads/xdk_web_win_master_0876.exe>
+    - <http://xdk-software.intel.com/>
 
 ### STEP 1: Create XDK account
 - Open Intel XDK and create an account or login.
