@@ -41,7 +41,7 @@ MakerPF projects can be exported to Android using an HTML5 web runtime or by usi
 
 Alternatively and for more advanced options you may use Crosswalk to build the app directly.
 
-    - <https://github.com/s6joui/makerpf-android/raw/master/Downloads/crosswalk-5.34.104.5.zip>
+-<https://github.com/s6joui/makerpf-android/raw/master/Downloads/crosswalk-5.34.104.5.zip>
 
 We recomend following this guide: <https://crosswalk-project.org/#documentation/getting_started>
 
