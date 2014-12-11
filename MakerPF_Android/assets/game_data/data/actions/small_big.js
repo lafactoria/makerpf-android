@@ -1,0 +1,1 @@
+_small_big_xml = '<seq><scale duration="500" scale="0.8"/><scale duration="500" scale="1.2"/><scale duration="500" scale="1"/></seq>';

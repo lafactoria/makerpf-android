@@ -1,0 +1,1 @@
+_up_down_xml = '<seq><jump duration="500" height="20" jumps="4"/></seq>';

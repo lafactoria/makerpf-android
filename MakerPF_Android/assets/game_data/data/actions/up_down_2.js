@@ -1,0 +1,1 @@
+_up_down_2_xml = '<seq><move duration="100" x="0" y="20"/><move duration="300" x="0" y="20"/><move duration="600" x="0" y="-40"/></seq>';

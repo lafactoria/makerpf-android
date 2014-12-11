@@ -1,0 +1,1 @@
+_options_xml = '<options><languages><language id="1" lang="Inglés"/></languages><cover active="true"/><menu active="true"/><theme name="Kids"/></options>';

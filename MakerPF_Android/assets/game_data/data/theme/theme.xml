@@ -1,0 +1,254 @@
+<theme>
+
+    <!-- ///////////////// LOADING ////////////////////////////////////////////// -->
+    <loading>
+        <image src="loading.gif" />
+    </loading>
+
+    <!-- ///////////////// MENU BUTTONS ////////////////////////////////////////////// -->
+    <menu>
+        <languageSelect     x="" y="" srcLeft="" srcBg="" sound=""/>
+        <buttonHome 		sound="" alignX ="left"  alignY="top"    x="20"     y="20" src="bt_menu.png"/>
+        <buttonSound 		sound="" alignX ="left"  alignY="top"    x="80"     y="20" src="bt_sound.png"/>
+        <buttonNext 		sound="" alignX ="right" alignY="top"    x="80"     y="20" src="bt_next.png"/>
+        <buttonPrev 		sound="" alignX ="right" alignY="top"    x="140"    y="20" src="bt_prev.png"/>
+    </menu>
+
+    <!-- ///////////////// INITIAL INSTRUCTION /////////////////////////////////////////////////// -->
+    <initialInstruction>
+        <onlyImage visible="false">
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <text		color="000000" font="Helvetica" fontSize="24" x="512" y="50" maxWidth="314" maxHeight="314" />
+            <image		x="0" y="0" alignX="center" alignY="center" maxWidth="WIDTH" maxHeight="HEIGHT"/>
+            <next       src="instruction_arrow.png" x="100" y="100" alignX="right" alignY="bottom"  />
+        </onlyImage>
+        <onlySound visible="false">
+            <background src="bg_popup.png" x="0" y="240" alignX="center" alignY="top" />
+            <sound		src="bt_sound_big.png" alignX="center" alignY="center" x="0" y="0" />
+            <next       src="instruction_arrow.png" x="100" y="100" alignX="right" alignY="bottom"  />
+        </onlySound>
+        <onlyText>
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <text		x="50" y="80"  alignX="left" alignY="top" color="000000" font="Helvetica" fontSize="24" maxWidth="500" maxHeight="500" />
+            <next       src="instruction_arrow.png" x="100" y="100" alignX="right" alignY="bottom"  />
+        </onlyText>
+        <ImageAndText>
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <text		x="270" y="80"  alignX="left" alignY="top" color="000000" font="Helvetica" fontSize="24" maxWidth="314" maxHeight="314" />
+            <image		x="50" y="50" alignX="left" alignY="top" maxWidth="200" maxHeight="400" />
+            <next       src="instruction_arrow.png" x="100" y="100" alignX="right" alignY="bottom"  />
+        </ImageAndText>
+        <ImageAndSound>
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <sound      src="bt_sound.png" x="50" y="100" alignX="left" alignY="bottom" />
+            <image		x="0" y="0" alignX="center" alignY="center" maxWidth="280" maxHeight="280" />
+            <next       src="instruction_arrow.png" x="100" y="100" alignX="right" alignY="bottom"  />
+        </ImageAndSound>
+        <SoundAndText>
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <sound      src="bt_sound.png" x="50" y="100" alignX="left" alignY="bottom" />
+            <text		x="50" y="80"  alignX="left" alignY="top" color="000000" font="Helvetica" fontSize="24" maxWidth="500" maxHeight="500" />
+            <next       src="instruction_arrow.png" x="100" y="100" alignX="right" alignY="bottom"  />
+        </SoundAndText>
+        <ImageSoundAndText>
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <sound      src="bt_sound.png" x="50" y="100" alignX="left" alignY="bottom" />
+            <text		x="314" y="80"  alignX="left" alignY="top" color="000000" font="Helvetica" fontSize="24" maxWidth="314" maxHeight="314" />
+            <image		x="30" y="30" alignX="left" alignY="top" maxWidth="280" maxHeight="280" />
+            <next       src="instruction_arrow.png" x="100" y="100" alignX="right" alignY="bottom"  />
+        </ImageSoundAndText>
+    </initialInstruction>
+
+    <!-- ///////////////// END INSTRUCTION /////////////////////////////////////////////////// -->
+    <endInstruction>
+        <onlyImage visible="false">
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <text		color="000000" font="Helvetica" fontSize="24" x="512" y="50" maxWidth="314" maxHeight="314" />
+            <image		x="0" y="0" alignX="center" alignY="center" maxWidth="WIDTH" maxHeight="HEIGHT"/>
+            <next       src="instruction_arrow.png" x="100" y="100" alignX="right" alignY="bottom"  />
+        </onlyImage>
+        <onlySound>
+            <background src="bg_popup.png" x="0" y="240" alignX="center" alignY="top" />
+            <sound		src="bt_sound_big.png" alignX="center" alignY="center" x="0" y="0" />
+            <next       src="instruction_arrow.png" x="100" y="100" alignX="right" alignY="bottom"  />
+        </onlySound>
+        <onlyText>
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <text		x="50" y="80"  alignX="left" alignY="top" color="000000" font="Helvetica" fontSize="24" maxWidth="500" maxHeight="500" />
+            <next       src="instruction_arrow.png" x="100" y="100" alignX="right" alignY="bottom"  />
+        </onlyText>
+        <ImageAndText>
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <text		x="270" y="80"  alignX="left" alignY="top" color="000000" font="Helvetica" fontSize="24" maxWidth="314" maxHeight="314" />
+            <image		x="50" y="50" alignX="left" alignY="top" maxWidth="200" maxHeight="400" />
+            <next       src="instruction_arrow.png" x="100" y="100" alignX="right" alignY="bottom"  />
+        </ImageAndText>
+        <ImageAndSound>
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <sound      src="bt_sound.png" x="50" y="100" alignX="left" alignY="bottom" />
+            <image		x="0" y="0" alignX="center" alignY="center" maxWidth="280" maxHeight="280" />
+            <next       src="instruction_arrow.png" x="100" y="100" alignX="right" alignY="bottom"  />
+        </ImageAndSound>
+        <SoundAndText>
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <sound      src="bt_sound.png" x="50" y="100" alignX="left" alignY="bottom" />
+            <text		x="50" y="80"  alignX="left" alignY="top" color="000000" font="Helvetica" fontSize="24" maxWidth="500" maxHeight="500" />
+            <next       src="instruction_arrow.png" x="100" y="100" alignX="right" alignY="bottom"  />
+        </SoundAndText>
+        <ImageSoundAndText>
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <sound      src="bt_sound.png" x="50" y="100" alignX="left" alignY="bottom" />
+            <text		x="314" y="80"  alignX="left" alignY="top" color="000000" font="Helvetica" fontSize="24" maxWidth="314" maxHeight="314" />
+            <image		x="30" y="30" alignX="left" alignY="top" maxWidth="280" maxHeight="280" />
+            <next       src="instruction_arrow.png" x="100" y="100" alignX="right" alignY="bottom"  />
+        </ImageSoundAndText>
+    </endInstruction>
+
+    <!-- ///////////////// GAMETYPES //////////////////////////////////////////////////////////////////// -->
+    <explore><modeTale active="false"></modeTale></explore>
+
+    <drag elementsPosition="horizontal/vertical" x="" y="0" ></drag> <!-- En el cas de horitzontal es posa nomes la yPos, en el cas de vertical es posa nomes la xPos !-->
+
+    <memory>
+        <pieces n="8">
+            <position alignX="center" alignY="center" x="-350"  y="-150"    maxWidth="200" maxHeight = "200" />
+            <position alignX="center" alignY="center" x="-120"  y="-150"    maxWidth="200" maxHeight = "200" />
+            <position alignX="center" alignY="center" x="110"   y="-150"    maxWidth="200" maxHeight = "200" />
+            <position alignX="center" alignY="center" x="340"   y="-150"    maxWidth="200" maxHeight = "200" />
+
+            <position alignX="center" alignY="center" x="-350"  y="100"      maxWidth="200" maxHeight = "200" />
+            <position alignX="center" alignY="center" x="-120"  y="100"      maxWidth="200" maxHeight = "200" />
+            <position alignX="center" alignY="center" x="110"   y="100"      maxWidth="200" maxHeight = "200" />
+            <position alignX="center" alignY="center" x="340"   y="100"      maxWidth="200" maxHeight = "200" />
+        </pieces>
+        <pieces n="12">
+            <position alignX="center" alignY="center" x="-350"  y="-225"    maxWidth="200" maxHeight = "200" />
+            <position alignX="center" alignY="center" x="-120"  y="-225"    maxWidth="200" maxHeight = "200" />
+            <position alignX="center" alignY="center" x="110"   y="-225"    maxWidth="200" maxHeight = "200" />
+            <position alignX="center" alignY="center" x="340"   y="-225"    maxWidth="200" maxHeight = "200" />
+
+            <position alignX="center" alignY="center" x="-350"  y="0"    maxWidth="200" maxHeight = "200" />
+            <position alignX="center" alignY="center" x="-120"  y="0"    maxWidth="200" maxHeight = "200" />
+            <position alignX="center" alignY="center" x="110"   y="0"    maxWidth="200" maxHeight = "200" />
+            <position alignX="center" alignY="center" x="340"   y="0"    maxWidth="200" maxHeight = "200" />
+
+            <position alignX="center" alignY="center" x="-350"  y="225"      maxWidth="200" maxHeight = "200" />
+            <position alignX="center" alignY="center" x="-120"  y="225"      maxWidth="200" maxHeight = "200" />
+            <position alignX="center" alignY="center" x="110"   y="225"      maxWidth="200" maxHeight = "200" />
+            <position alignX="center" alignY="center" x="340"   y="225"      maxWidth="200" maxHeight = "200" />
+        </pieces>
+
+<cover src="carta-vermella.png"/>
+<white src="carta-blanca.png"/>
+
+    </memory>
+
+    <findme alignX = "center" alignY = "bottom" x="0" y="50" maxWidth="180"
+            itemFoundAction="" changeItemAction=""
+            itemFoundSound="" itemFailAction=""
+            itemFailSound="" >
+    </findme>
+
+	<paint>	
+		<colors                     src="paint-bottom.png"  alignX="center" alignY="bottom" x="-405" y="95">
+			<color rgb="49-182-234" src="paint-c1.png"      alignX="center" alignY="bottom" x="-350" y="70" sound=""/>
+			<color rgb="38-78-170"  src="paint-c2.png"      alignX="center" alignY="bottom" x="-285" y="70" sound=""/>
+			<color rgb="141-70-162" src="paint-c3.png"      alignX="center" alignY="bottom" x="-220" y="70" sound=""/>
+			<color rgb="255-70-162" src="paint-c4.png"      alignX="center" alignY="bottom" x="-155" y="70" sound=""/>
+			<color rgb="255-0-0"    src="paint-c5.png"      alignX="center" alignY="bottom" x="-90" y="70" sound=""/>
+			<color rgb="255-111-0"  src="paint-c6.png"      alignX="center" alignY="bottom" x="-25" y="70" sound=""/>
+			<color rgb="255-169-0"  src="paint-c7.png"      alignX="center" alignY="bottom" x="40" y="70" sound=""/>
+			<color rgb="255-255-0"  src="paint-c8.png"      alignX="center" alignY="bottom" x="105" y="70" sound=""/>
+			<color rgb="159-202-82" src="paint-c9.png"      alignX="center" alignY="bottom" x="170" y="70" sound=""/>
+			<color rgb="28-159-83"  src="paint-c10.png"     alignX="center" alignY="bottom" x="235" y="70" sound=""/>
+			<color rgb="88-88-88"   src="paint-c11.png"     alignX="center" alignY="bottom" x="300" y="70" sound=""/>
+		</colors>
+		
+		<aura src="selected.png" alignX="center" alignY="bottom" x="0" y="0" sound="" />
+		
+		<sizes                src="paint-left.png"   alignX="left"      alignY="center" x="0" y="-200">
+			<size value="20"  src="paint-small.png"  alignX="left"      alignY="center" x="30" y="25" sound=""/>
+			<size value="50"  src="paint-medium.png" alignX="left"      alignY="center" x="25" y="-30" sound=""/>
+			<size value="100" src="paint-big.png"    alignX="left"      alignY="center" x="19" y="-98" sound=""/>
+		</sizes>
+        <activeBrush alignX="left"      alignY="center" x="47" y="109" />
+
+		<buttons src="" alignX="left" alignY="center" x="" y="">
+			<clear src="" alignX="center" alignY="bottom" x="" y="" sound=""/>
+			<photo src="" alignX="center" alignY="bottom" x="" y="" sound=""/>
+			<share src="" alignX="center" alignY="bottom" x="" y="" sound=""/>
+		</buttons>
+	</paint>
+
+	<differences>
+		<imageOk src="ok.png" sound=""/>
+	</differences>
+
+    <arrows strokeSize="8" arrowColor="255-0-0" okSound=""></arrows>
+
+    <quizText>
+        <question       x="600" y="110" alignX="right" alignY="top" font="Futura" fontSize="24" color="000000" maxWidth="550"  />
+        <image          x="80" y="60" alignX="left" alignY="top" maxWidth="400" maxHeight="200" />
+        <nextQuestion   src="nextQuestion.png"    alignX="center" alignY="bottom" x="-50" y="100" sound="" />
+        <input          src="input.png"           alignX="center" alignY="bottom" x="0" y="100" sound="" font="Helvetica" fontSize="24" color="000000" />
+        <clear          src="clear.png"           alignX="center" alignY="bottom" x="-280" y="220" sound="" />
+    </quizText>
+
+    <quiz>
+        <nextQuestion   src="nextQuestion.png" alignX="center" alignY="bottom" x="-50" y="100" sound="" />
+        <question       x="90"  y="110"  alignX="left" alignY="top" font="Futura" fontSize="24" color="000000" maxWidth="600"  />
+        <image          x="250" y="60" alignX="right" alignY="top" maxWidth="400" maxHeight="200" />
+    </quiz>
+
+    <interactiveImages>
+        <onlyImage>
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <text		color="000000" font="Helvetica" fontSize="24" x="512" y="50" maxWidth="314" maxHeight="314" />
+            <image		x="0" y="0" alignX="center" alignY="center" maxWidth="WIDTH" maxHeight="HEIGHT"/>
+            <next       src="bt_next.png" x="100" y="100" alignX="right" alignY="bottom" />
+            <prev       src="bt_prev.png" x="170" y="100" alignX="right" alignY="bottom"  />
+        </onlyImage>
+        <onlySound>
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <sound		src="bt_sound_big.png" alignX="center" alignY="center" x="0" y="0" />
+            <next       src="bt_next.png" x="100" y="100" alignX="right" alignY="bottom" />
+            <prev       src="bt_prev.png" x="170" y="100" alignX="right" alignY="bottom"  />
+        </onlySound>
+        <onlyText>
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <text		x="50" y="80"  alignX="left" alignY="top" color="000000" font="Helvetica" fontSize="24" maxWidth="500" maxHeight="500" />
+            <next       src="bt_next.png" x="100" y="100" alignX="right" alignY="bottom" />
+            <prev       src="bt_prev.png" x="170" y="100" alignX="right" alignY="bottom"  />
+        </onlyText>
+        <ImageAndText>
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <text		x="270" y="80"  alignX="left" alignY="top" color="000000" font="Helvetica" fontSize="24" maxWidth="314" maxHeight="314" />
+            <image		x="50" y="50" alignX="left" alignY="top" maxWidth="200" maxHeight="400" />
+            <next       src="bt_next.png" x="100" y="100" alignX="right" alignY="bottom" />
+            <prev       src="bt_prev.png" x="170" y="100" alignX="right" alignY="bottom"  />
+        </ImageAndText>
+        <ImageAndSound>
+            <background src="bg_popup.png" x="0" y="160" alignX="center" alignY="top" />
+            <sound		src="bt_sound.png" x="280" y="90" />
+            <image		x="50" y="50" alignX="left" alignY="top" maxWidth="200" maxHeight="400" />
+            <next       src="bt_next.png" x="100" y="100" alignX="right" alignY="bottom" />
+            <prev       src="bt_prev.png" x="170" y="100" alignX="right" alignY="bottom"  />
+        </ImageAndSound>
+        <SoundAndText>
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <sound		src="bt_sound.png" x="50" y="100" alignX="left" alignY="bottom" />
+            <text		x="50" y="80"  alignX="left" alignY="top" color="000000" font="Helvetica" fontSize="24" maxWidth="500" maxHeight="500" />
+            <next       src="bt_next.png" x="100" y="100" alignX="right" alignY="bottom" />
+            <prev       src="bt_prev.png" x="170" y="100" alignX="right" alignY="bottom"  />
+        </SoundAndText>
+        <ImageSoundAndText>
+            <background src="bg_popup.png" x="0" y="0" alignX="center" alignY="center" />
+            <sound		src="bt_sound.png" x="50" y="100" alignX="left" alignY="bottom" />
+            <text		x="270" y="80"  alignX="left" alignY="top" color="000000" font="Helvetica" fontSize="24" maxWidth="314" maxHeight="314" />
+            <image		x="50" y="50" alignX="left" alignY="top" maxWidth="200" maxHeight="400" />
+            <next       src="bt_next.png" x="100" y="100" alignX="right" alignY="bottom" />
+            <prev       src="bt_prev.png" x="170" y="100" alignX="right" alignY="bottom"  />
+        </ImageSoundAndText>
+    </interactiveImages>
+
+</theme>

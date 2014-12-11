@@ -1,0 +1,11 @@
+<game>
+	<menu>
+		<background src="menu_gina_colours_maker_v5.png" scale="noscale" color="15658734" rgb="238-238-238" zoom="0.75"/>
+		<mode id="0" />
+			<menuItem id="1" src="base_activitats.png" x="865" y="591" scale="860.3913620776946" rotation="0" game="Memory_B14FB04E-083F-B3EE-CA9A-24FB18A47A89" type="memory">
+ 				<precedences>
+ 					<precedence id="0" />
+				</precedences>
+			</menuItem>
+	</menu>
+</game>

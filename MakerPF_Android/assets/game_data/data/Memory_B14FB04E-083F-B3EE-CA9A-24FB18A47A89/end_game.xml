@@ -1,0 +1,6 @@
+<instruction>
+	<image src="ultim_missatge.png"/>
+	<sounds>
+		<sound lang="1" src="47_you_ve_found_them_all.mp3" />
+	</sounds>
+</instruction>

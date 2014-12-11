@@ -1,0 +1,1 @@
+_right_left_xml = '<seq><move duration="500" x="40" y="0"/><move duration="500" x="-80" y="0"/><move duration="500" x="40" y="0"/></seq>';

@@ -1,0 +1,1 @@
+_metadata_xml = '<macrogame><metadata><title>ginacolours</title><date>12.06.2014 - 18:21</date><canvasWidth>1024</canvasWidth><canvasHeight>768</canvasHeight></metadata></macrogame>';

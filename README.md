@@ -6,88 +6,52 @@
 
 MakerPF projects can be exported to Android using an HTML5 web runtime or by using native code.
 
-## Method 1: Intel XDK (HTML5)
 
 ### Prerequisites
-- Download and install Intel XDK
-    - Mirror 1: <https://github.com/s6joui/makerpf-android/raw/master/Downloads/xdk_web_win_master_0876.exe>
-    - Mirror 2: <http://xdk-software.intel.com/>
+- Download and install Eclipse
+- Click "Download Eclipse ADT with the Android SDK for Windows"   
+     https://developer.android.com/sdk/index.html?hl=i   
+     
+- Unpack the ZIP file (named adt-bundle-<os_platform>.zip) and save it to an appropriate location, such as a "Development" directory in your home directory.
+- Open the adt-bundle-<os_platform>/eclipse/ directory and launch Eclipse.
+- Choose where you want to place the workspace folder   
 
-### STEP 1: Create XDK account
-- Open Intel XDK and create an account or login.
+       
+![Download Project](https://dl.dropboxusercontent.com/u/18446966/MAKERPF_MANUAL_IMAGES/android/1-workspace.JPG)
+   
+   
+- Download the base project from github <https://github.com/lafactoria/makerpf-android>      
+![Download Project](https://dl.dropboxusercontent.com/u/18446966/MAKERPF_MANUAL_IMAGES/makerPF-download.png) 
 
-### STEP 2: Import
-- Click on "Import an Existing App" on the left menu.
-- Select the folder where you exported your MakerPF project. (It should have an index.html file inside).
-- Type your project's name and click on "Create".
 
-### STEP 3: Build
-- Select the "Build" tab.
-- Click on "Build Crosswalk for Android" and wait for the upload to finish.
+### STEP 1: Import
+1.1 Copy the downloaded files to the folder "Workspace".
+![Download Project](https://dl.dropboxusercontent.com/u/18446966/MAKERPF_MANUAL_IMAGES/android/2-copiar_a_workspace.jpg)
 
-![Build Crosswalk for Android](http://i.imgur.com/URbl8MY.jpg)   
+1.2 Click on "Import" on the left menu; and then click on "Existing Projects into Workspace".
+![Download Project](https://dl.dropboxusercontent.com/u/18446966/MAKERPF_MANUAL_IMAGES/android/3-importar.jpg)   
+![Download Project](https://dl.dropboxusercontent.com/u/18446966/MAKERPF_MANUAL_IMAGES/android/4-existing.jpg)
 
-### STEP 4: Edit
-- In the details tab you can edit the app's title, package name, version and plugin options. We recommend disabling plugins that your app doesn't need.
-- In the assets tab you can change the app's icon and splash screen.
-- Once you're done editing, click on "Build App Now" and wait for it to finish.
-- When it finishes you'll be able to download the app.
+1.3 Select the folder where you copied the "crosswalk" and the "MakerPF_android" and import both files to Eclipse.
+![Download Project](https://dl.dropboxusercontent.com/u/18446966/MAKERPF_MANUAL_IMAGES/android/5-select_workspace.JPG)
 
-### STEP 5: Upload to Google Play
-- You'll notice there are two APK files, one for ARM architecture and one for x86. Use this guide to upload the two APKs as a single application: <https://software.intel.com/en-us/html5/articles/submitting-multiple-crosswalk-apk-to-google-play-store>
-- You may also choose to upload the ARM version only, as it's the most widely used platform.
+1.4 Click "properties" of the crosswalk and link it with the project.
+![Download Project](https://dl.dropboxusercontent.com/u/18446966/MAKERPF_MANUAL_IMAGES/android/6-fix_properties.JPG)
+![Download Project](https://dl.dropboxusercontent.com/u/18446966/MAKERPF_MANUAL_IMAGES/android/7-fix_properties_android.JPG)
 
-## Method 2: Crosswalk (HTML5)
-
-Alternatively and for more advanced options you may use Crosswalk to build the app directly.
-
-- <https://github.com/s6joui/makerpf-android/raw/master/Downloads/crosswalk-5.34.104.5.zip>
-
-We recomend following this guide: <https://crosswalk-project.org/#documentation/getting_started>
-
-### Tip: lock the screen orientation
-- Using Crosswalk,you can lock the device's orientation with the following command when building the app: ```--orientation=landscape```
-    
-    Example:
-    ```
-    python make_apk.py --manifest=xwalk-appname/manifest.json --orientation=landscape
-    ```
-
-### Upload to Google Play
-- Again, you'll notice there are two APK files, one for ARM architecture and one for x86. Use this guide to upload the two APKs as a single application: <https://software.intel.com/en-us/html5/articles/submitting-multiple-crosswalk-apk-to-google-play-store>
-- You may also choose to upload the ARM version only, as it's the most widely used platform.
-
-## Method 3: Native code
-
-### Prerequisites
-- Have eclipse with android plugin and sdk <https://developer.android.com/sdk/index.html>
-- Download android versions 8 and 17 (or the last one)
- 
-### STEP 1: Download base project
-We provide you a base MakerPF native project to easily create the native APK.
-
-1. Download the base project from github <https://github.com/lafactoria/makerpf-android>      
-![Download Project](https://dl.dropboxusercontent.com/u/18446966/MAKERPF_MANUAL_IMAGES/makerPF-download.png)   
-2. Import project to library to eclipse   
-![Import Library](https://dl.dropboxusercontent.com/u/18446966/MAKERPF_MANUAL_IMAGES/android/import.png)   
-![Import Library](https://dl.dropboxusercontent.com/u/18446966/MAKERPF_MANUAL_IMAGES/android/import2.png)   
-![Import Library](https://dl.dropboxusercontent.com/u/18446966/MAKERPF_MANUAL_IMAGES/android/import3.png)   
-3. Import MakerPF_Android project to eclipse     
-![Import Library4](https://dl.dropboxusercontent.com/u/18446966/MAKERPF_MANUAL_IMAGES/android/import4.png)
+1.5 Link MakerPF with the base project by clicking again "properties".
+![Download Project](https://dl.dropboxusercontent.com/u/18446966/MAKERPF_MANUAL_IMAGES/android/8-link_with_base_project.JPG)
 
 
 ### STEP 2: Copy MakerPF Content
-Since MakerPF published project comes with the HTML5 one by default, we have to copy the abstract content to the native Android project.   
 
-- Copye the content of the folder game into the assets folder of the MakerPF_Android project (Copy only the content of the folder not the folder itself)
-
-![MakerPF Content](https://dl.dropboxusercontent.com/u/18446966/MAKERPF_MANUAL_IMAGES/android/content.png)
+- Copy the Maker Project to www_data project. Delete the other folders and add the unpacked ZIP file.
 
 
 ### STEP 3: Set project properties
-Each android project needs to have a unique ID   
+Each android project needs to have a unique ID.
 
-1. Change the project id throught android. Right click over **src/com.planetfactory.makerpf** and press **Refactor/Rename…**
+1. Change the project ID throught android. Right click over **src/com.planetfactory.makerpf** and press **Refactor/Rename…**
 ![Change Package id](https://dl.dropboxusercontent.com/u/18446966/MAKERPF_MANUAL_IMAGES/android/rename.png)
 2. Change the project id in the AndroidManifest.xml 
 ![Change Package id Manifest](https://dl.dropboxusercontent.com/u/18446966/MAKERPF_MANUAL_IMAGES/android/packageId.png)

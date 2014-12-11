@@ -1,0 +1,175 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 5.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>MakerPF</title>
+
+    <script type="text/javascript">var createjs = window;</script>
+    <script src="js/preloadjs-0.1.0.min.js"></script>
+    <script src="js/autotab.js"></script>
+    <script src="js/easeljs-0.7.1.min.js"></script>
+    <script src="js/PFCommunicationLayer.js"></script>
+    <script src="js/tweenjs-0.5.1.min.js"></script>
+    <script src="js/soundmanager2.js"></script>
+    <script src="js/KitabooCommunicationManager.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <!--<script src="js/soundmanager_editor.js"></script>-->
+
+    <script type="text/javascript">
+        var playDevice 	= "WEB";
+        var soundDevice = "WEB";
+        
+        var SHOULD_DEBUG = false; //set it false in MakerPF tool to avoid all the console.xxx calls
+        var CUSTOM_CLICK_ALPHA = 0.01;
+        var CUSTOM_CLICK_COLOR = "#FFFFFF";
+        
+    </script>
+
+    <script type="text/javascript" src="src/lib/minified.js"></script>
+
+    <!--
+    <script src="src/PFUtils.js"></script>
+    <script src="src/Singleton.js"></script>
+    <script src="src/PFCore.js"></script>
+    <script src="src/Background.js"></script>
+    <script src="src/PFSound.js"></script>
+    <script src="src/PFMain.js"></script>
+    <script src="src/PFPortada.js"></script>
+    <script src="src/PFLanguage.js"></script>
+    <script src="src/PFLangManager.js"></script>
+    <script src="src/PFMenu.js"></script>
+    <script src="src/PFItemMenu.js"></script>
+    <script src="src/PFAction.js"></script>
+    <script src="src/PFGameManager.js"></script>
+    <script src="src/PFGame.js"></script>
+    <script src="src/PFItem.js"></script>
+    <script src="src/PFItemDecoratorAction.js"></script>
+    <script src="src/PFItemLanguage.js"></script>
+    <script src="src/PFMusicManager.js"></script>
+
+    <script src="src/games/PFBaseItem.js"></script>
+    <script src="src/games/PFThemeItem.js"></script>
+    <script src="src/games/PFBaseGame.js"></script>
+    <script src="src/games/PFInstructions.js"></script>
+    <script src="src/games/PFEndInstruction.js"></script>
+    <script src="src/games/PFEndGame.js"></script>
+    <script src="src/games/PFEndGameResult.js"></script>
+    <script src="src/games/quiz/PFQuizResult.js"></script>
+
+
+    <script src="src/games/explore/PFItemExplore.js"></script>
+    <script src="src/games/explore/PFGameExplore.js"></script>
+    <script src="src/games/explore/PFGameExploreListen.js"></script>
+    <script src="src/games/drag/PFItemDrag.js"></script>
+    <script src="src/games/drag/PFGameDrag.js"></script>
+    <script src="src/games/drag/PFGameDragListen.js"></script>
+    <script src="src/games/memory/PFItemMemory.js"></script>
+    <script src="src/games/memory/PFGameMemory.js"></script>
+    <script src="src/games/memory/PFGameMemoryListen.js"></script>
+    <script src="src/games/puzzle/PFItemPuzzle.js"></script>
+    <script src="src/games/puzzle/PFGamePuzzle.js"></script>
+    <script src="src/games/puzzle/PFGamePuzzleListen.js"></script>
+    <script src="src/games/findMe/PFItemFindMe.js"></script>
+    <script src="src/games/findMe/PFGameFindMe.js"></script>
+    <script src="src/games/listenAndTouch/PFItemTouchListen.js"></script>
+    <script src="src/games/listenAndTouch/PFGameTouchListen.js"></script>
+    <script src="src/games/listenAndTouch/PFGameTouchListenListen.js"></script>
+    <script src="src/games/listenAndDrag/PFItemListenDrag.js"></script>
+    <script src="src/games/listenAndDrag/PFGameListenDrag.js"></script>
+    <script src="src/games/listenAndDrag/PFGameListenDragListen.js"></script>
+    <script src="src/games/fastDrag/PFItemFastDrag.js"></script>
+    <script src="src/games/fastDrag/PFItemFastDragParent.js"></script>
+    <script src="src/games/fastDrag/PFFastDrag.js"></script>
+    <script src="src/games/fastDrag/PFFastDragListen.js"></script>
+    <script src="src/games/differences/PFGameDifferences.js"></script>
+    <script src="src/games/differences/PFGameDifferencesListen.js"></script>
+    <script src="src/games/differences/PFBackgroundDifferences.js"></script>
+    <script src="src/games/paint/PFGamePaint.js"></script>
+    <script src="src/games/InteractiveImages/PFItemInteractiveImages.js"></script>
+    <script src="src/games/InteractiveImages/PFGameInteractiveImages.js"></script>
+    <script src="src/games/InteractiveImages/PFGameInteractiveImagesListen.js"></script>
+    <script src="src/games/InteractiveImages/PFInteractiveImageInstruction.js"></script>
+    <script src="src/games/quiz/PFItemQuizQuestion.js"></script>
+    <script src="src/games/quiz/PFItemQuizAnswer.js"></script>
+    <script src="src/games/quiz/PFGameQuiz.js"></script>
+    <script src="src/games/arrows/PFItemFletxes.js"></script>
+    <script src="src/games/arrows/PFGameFletxes.js"></script>
+    <script src="src/games/arrows/PFGameFletxesListen.js"></script>
+    <script src="src/games/quizText/PFItemQuizGapsQuestion.js"></script>
+    <script src="src/games/quizText/PFItemQuizGapsQuestionState.js"></script>
+    <script src="src/games/quizText/PFGameQuizGaps.js"></script>
+    <script src="src/games/dragToContainers/PFGameDragAllIn.js"></script>
+    <script src="src/games/dragToContainers/PFGameDragAllInListen.js"></script>
+    <script src="src/games/arrows/PFGameFletxesValidar.js"></script>
+    <script src="src/games/arrows/PFGameFletxesValidarListen.js"></script>
+    <script src="src/games/paint/PFItemPaint.js"></script>
+
+
+    <script src="src/games/xml/PFXMLParser.js"></script>
+    <script src="src/games/xml/PFActionXML.js"></script>
+    <script src="src/games/xml/PFThemeXML.js"></script>
+    <script src="src/games/xml/PFXMLExplore.js"></script>
+    <script src="src/games/xml/PFXMLMemory.js"></script>
+    <script src="src/games/xml/PFXMLArrows.js"></script>
+    <script src="src/games/xml/PFXMLDifferences.js"></script>
+    <script src="src/games/xml/PFXMLDrag.js"></script>
+    <script src="src/games/xml/PFXMLDragContainers.js"></script>
+    <script src="src/games/xml/PFXMLFindMe.js"></script>
+    <script src="src/games/xml/PFXMLInteractiveImages.js"></script>
+    <script src="src/games/xml/PFXMLListenDrag.js"></script>
+    <script src="src/games/xml/PFXMLListenTouch.js"></script>
+    <script src="src/games/xml/PFXMLPaint.js"></script>
+    <script src="src/games/xml/PFXMLPuzzle.js"></script>
+    <script src="src/games/xml/PFXMLQuiz.js"></script>
+    <script src="src/games/xml/PFXMLQuizText.js"></script>
+    -->
+
+    <link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body onload    = "" >
+
+    <div id="game" align="center">
+        <canvas id="canvas" width="1024" height="768">
+        </canvas>
+        <img id="loading" src="data/theme/images/loading.gif" alt="loading..." style="position: absolute; left: 50%; top: 50%;"/>
+    </div>
+
+    <div id="aux" align="center">
+    </div>
+
+
+    <script type="text/javascript">
+
+        $.fn.extend({
+            disableSelection: function() {
+                this.each(function() {
+                    if (typeof this.onselectstart != 'undefined') {
+                        this.onselectstart = function() { return false; };
+                    } else if (typeof this.style.MozUserSelect != 'undefined') {
+                        this.style.MozUserSelect = 'none';
+                    } else {
+                        this.onmousedown = function() { return false; };
+                    }
+                });
+            }
+        });
+        PFSound.init();
+
+	    var globalScale = 1;
+	
+	    $(document).ready(function() {
+	
+	        window.addEventListener('load', resize, false);
+	        window.addEventListener('resize', resize, false);
+	
+	        $("#canvas").disableSelection();
+	        PFMain();
+	    });
+
+    </script>
+
+
+</body>
+</html>

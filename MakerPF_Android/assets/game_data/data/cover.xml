@@ -1,0 +1,6 @@
+<game>
+	<cover>
+		<background src="portada_gina_colours_maker_v5.png" scale="noscale" color="15658734" rgb="238-238-238" zoom="0.75"/>
+		<play src="botogina_jugar_v2.png" x="878" y="600" rotation="0" scale="1000"/>
+	</cover>
+</game>
